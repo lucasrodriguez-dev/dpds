@@ -9,7 +9,7 @@ class DTUni: public DTDistribucion {
         float b;
     public:
         DTUni(float,float);
-        int getA() const;
+        float getA() const;
         float getB() const;
 };
 

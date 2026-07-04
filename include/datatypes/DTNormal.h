@@ -9,7 +9,7 @@ class DTNormal: public DTDistribucion {
         float sigmaSquare;
     public:
         DTNormal(float,float);
-        int getMu() const;
+        float getMu() const;
         float getSigmaSquare() const;
 };
 
