@@ -5,9 +5,10 @@
 
 class Bin: public Distribucion {
     private:
-        int n;
+        unsigned int n;
         float p;
     public:
+        Bin(unsigned int,float);
         float esperanza() const;
         float varianza() const;
         float desvio() const;
