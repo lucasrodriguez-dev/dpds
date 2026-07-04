@@ -5,14 +5,14 @@
 
 class DTHip: public DTDistribucion {
     private:
-        int sampleSize;
-        int totalSize;
-        int distinguishedSize;
+        unsigned int sampleSize;
+        unsigned int totalSize;
+        unsigned int distinguishedSize;
     public:
-        DTHip(int,int,int);
-        int getSampleSize() const;
-        int getTotalSize() const;
-        int getDistinguishedSize() const;
+        DTHip(unsigned int,unsigned int,unsigned int);
+        unsigned int getSampleSize() const;
+        unsigned int getTotalSize() const;
+        unsigned int getDistinguishedSize() const;
 };
 
 #endif

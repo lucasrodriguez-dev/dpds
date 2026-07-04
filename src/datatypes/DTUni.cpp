@@ -1,6 +1,9 @@
 #include "DTUni.h"
 
 DTUni::DTUni(float a, float b) {
+    if(a >= b){
+        throw ParametroInvalidoException("Debe cumplirse a < b");
+    }
     this->a = a;
     this->b = b;
 }

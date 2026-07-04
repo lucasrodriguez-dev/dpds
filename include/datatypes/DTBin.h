@@ -5,11 +5,11 @@
 
 class DTBin: public DTDistribucion {
     private:
-        int n;
+        unsigned int n;
         float p;
     public:
-        DTBin(int,float);
-        int getN() const;
+        DTBin(unsigned int,float);
+        unsigned int getN() const;
         float getP() const;
 };
 

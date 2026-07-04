@@ -5,11 +5,11 @@
 
 class DTBinNeg: public DTDistribucion {
     private:
-        int r;
+        unsigned int r;
         float p;
     public:
-        DTBinNeg(int,float);
-        int getR() const;
+        DTBinNeg(unsigned int,float);
+        unsigned int getR() const;
         float getP() const;
 };
 
