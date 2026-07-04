@@ -5,7 +5,7 @@
 
 class DTPois: public DTDistribucion {
     private:
-        unsigned float lambda;
+        float lambda;
     public:
         DTPois(float);
         float getLambda() const;

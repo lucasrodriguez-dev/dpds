@@ -6,7 +6,7 @@
 class DTNormal: public DTDistribucion {
     private:
         float mu;
-        unsigned float sigmaSquare;
+        float sigmaSquare;
     public:
         DTNormal(float,float);
         int getMu() const;

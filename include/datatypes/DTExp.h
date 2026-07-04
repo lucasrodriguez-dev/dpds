@@ -5,7 +5,7 @@
 
 class DTExp: public DTDistribucion {
     private:
-        unsigned float lambda;
+        float lambda;
     public:
         DTExp(float);
         float getLambda() const;

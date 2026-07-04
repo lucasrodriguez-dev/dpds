@@ -1,7 +1,7 @@
 #ifndef PROPIEDADNUMERICA_H
 #define PROPIEDADNUMERICA_H
 
-enum PropiedadNumerica = {
+enum PropiedadNumerica {
     esperanza,
     varianza,
     desvio

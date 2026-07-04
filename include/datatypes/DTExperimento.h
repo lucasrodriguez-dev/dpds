@@ -1,14 +1,16 @@
 #ifndef DTEXPERIMENTO_H
 #define DTEXPERIMENTO_H
 
+#include <string>
+
 class DTExperimento {
     private:
-        string nombre;
-        string descripcion;
+        std::string nombre;
+        std::string descripcion;
     public:
-        DTExperimento(string,string);
-        string getNombre() const;
-        string getDescripcion() const;
+        DTExperimento(std::string,std::string);
+        std::string getNombre() const;
+        std::string getDescripcion() const;
 };
 
 #endif

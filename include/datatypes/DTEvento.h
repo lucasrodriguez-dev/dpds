@@ -1,13 +1,15 @@
 #ifndef DTEVENTO_H
 #define DTEVENTO_H
 
+#include <string>
+
 class DTEvento {
     private:
-        string nombre;
+        std::string nombre;
         float probabilidad;
     public:
-        DTEvento(string,float);
-        string getNombre() const;
+        DTEvento(std::string,float);
+        std::string getNombre() const;
         float getProbabilidad() const;
 };
 
