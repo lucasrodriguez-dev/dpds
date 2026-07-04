@@ -8,6 +8,7 @@ class BinNeg: public Distribucion {
         int r;
         float p;
     public:
+        BinNeg(int,float);
         float esperanza() const;
         float varianza() const;
         float desvio() const;

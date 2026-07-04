@@ -19,11 +19,11 @@ float Bin::evaluar(float x) const {
     if(std::floor(x) != x){
         return 0;
     }
-    return algorithms::binomial::pmfRecurrencia(n, p, x);
+    return algorithms::binomial::recurrencia::pmf(n, p, x);
 }
 float Bin::distribucionAcumulada(float x) const {
     if(x < 0){
         return 0;
     }
-    return algorithms::binomial::cdfSumatoriaRecurrencia(n, p, x);
+    return algorithms::binomial::recurrencia::cdf(n, p, x);
 }
