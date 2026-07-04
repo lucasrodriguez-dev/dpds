@@ -6,8 +6,8 @@
 class DTHip: public DTDistribucion {
     private:
         int sampleSize;
-        int TotalSize;
-        int DistinguishedSize;
+        int totalSize;
+        int distinguishedSize;
     public:
         DTHip(int,int,int);
         int getSampleSize() const;
