@@ -5,13 +5,13 @@
 
 class Hip: public Distribucion {
     private:
-        int sampleSize;
-        int totalSize;
-        int distinguishedSize;
+        unsigned int sampleSize;
+        unsigned int totalSize;
+        unsigned int distinguishedSize;
     public:
+        Hip(unsigned int n,unsigned int N,unsigned int K);
         float esperanza() const;
         float varianza() const;
-        float desvio() const;
         float evaluar(float) const;
         float distribucionAcumulada(float) const;
 };

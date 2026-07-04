@@ -9,7 +9,7 @@ class DTHip: public DTDistribucion {
         unsigned int totalSize;
         unsigned int distinguishedSize;
     public:
-        DTHip(unsigned int,unsigned int,unsigned int);
+        DTHip(unsigned int n,unsigned int N,unsigned int K);
         unsigned int getSampleSize() const;
         unsigned int getTotalSize() const;
         unsigned int getDistinguishedSize() const;

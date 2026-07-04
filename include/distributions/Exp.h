@@ -9,7 +9,6 @@ class Exp: public Distribucion {
     public:
         float esperanza() const;
         float varianza() const;
-        float desvio() const;
         float evaluar(float) const;
         float distribucionAcumulada(float) const;
 };

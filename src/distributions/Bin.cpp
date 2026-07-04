@@ -16,7 +16,7 @@ float Bin::varianza() const {
     return n*p*(1-p);
 }
 float Bin::evaluar(float x) const {
-    if(std::floor(x) != x){
+    if(x < 0 || std::floor(x) != x){
         return 0;
     }
     return algorithms::binomial::recurrencia::pmf(n, p, x);
