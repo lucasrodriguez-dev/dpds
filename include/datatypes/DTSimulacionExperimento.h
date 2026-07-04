@@ -6,13 +6,13 @@
 class DTSimulacionExperimento {
     private:
         DTEvento evento;
-        int ocurrencias;
+        unsigned int ocurrencias;
         float frecuenciaRelativa;
     public:
-        DTSimulacionExperimento(DTEvento,int,float);
-        DTSimulacionExperimento(DTEvento,int);
+        DTSimulacionExperimento(DTEvento,unsigned int,float);
+        DTSimulacionExperimento(DTEvento,unsigned int);
         DTEvento getEvento() const;
-        int getOcurrencias() const;
+        unsigned int getOcurrencias() const;
         float getFrecuenciaRelativa() const;
         void setFrecuenciaRelativa(float);
 };
