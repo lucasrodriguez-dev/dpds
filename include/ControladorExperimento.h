@@ -4,6 +4,9 @@
 #include "ManejadorExperimento.h"
 
 class ControladorExperimento {
+    private:
+        static const std::string EXPERIMENTO_NULO;
+        std::string experimentoSeleccionado;
     public:
         void altaExperimento(std::string,std::string);
         std::vector<DTExperimento> listarExperimentos() const;
