@@ -7,6 +7,7 @@ class Exp: public Distribucion {
     private:
         float lambda;
     public:
+        Exp(float);
         float esperanza() const;
         float varianza() const;
         float evaluar(float) const;

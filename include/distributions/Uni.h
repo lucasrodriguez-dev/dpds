@@ -8,6 +8,7 @@ class Uni: public Distribucion {
         float a;
         float b;
     public:
+        Uni(float,float);
         float esperanza() const;
         float varianza() const;
         float evaluar(float) const;

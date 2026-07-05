@@ -3,6 +3,9 @@
 
 #include "ParametroInvalidoException.h"
 
-class DTDistribucion {};
+class DTDistribucion {
+    public:
+        virtual ~DTDistribucion() = default;
+};
 
 #endif

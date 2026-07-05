@@ -7,8 +7,7 @@
 class Distribucion {
     public:
         virtual ~Distribucion() = default;
-        Distribucion* crear(DTDistribucion);
-        float simular() const;
+        virtual float simular() const = 0;
         virtual float esperanza() const = 0;
         virtual float varianza() const = 0;
         float desvio() const;
