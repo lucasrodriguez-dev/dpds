@@ -9,6 +9,8 @@ class Evento {
         float probabilidad;
     public:
         Evento(DTEvento);
+        float getProbabilidad() const;
+        DTEvento getDT() const;
 };
 
 #endif

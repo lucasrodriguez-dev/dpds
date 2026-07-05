@@ -9,3 +9,11 @@ Evento::Evento(DTEvento dt) {
     this->nombre = dt.getNombre();
     this->probabilidad = p;
 }
+
+float Evento::getProbabilidad() const {
+    return probabilidad;
+}
+
+DTEvento Evento::getDT() const {
+    return DTEvento(nombre, probabilidad);
+}

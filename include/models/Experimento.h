@@ -19,6 +19,7 @@ class Experimento {
         std::string descripcion;
         std::map<std::string, Evento> eventos;
         std::map<std::string, VariableAleatoria> variablesAleatorias;
+        bool eventosValidos(std::vector<DTEvento>);
     public:
         Experimento(std::string,std::string);
         DTExperimento getDT();
@@ -29,7 +30,7 @@ class Experimento {
         std::vector<DTVariableAleatoria> listarVariablesAleatorias() const;
         float simularVariableAleatoria(std::string) const;
         float consultarPropiedad(std::string,PropiedadNumerica) const;
-        float evaluarDensidad(std::string,float) const;
+        float evaluarVariableAleatoria(std::string,float) const;
         float evaluarDistribucionAcumulada(std::string,float) const;
 };
 
