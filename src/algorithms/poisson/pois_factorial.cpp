@@ -1,15 +1,21 @@
-#include "pois_factorial.h"
+#include "pois_factorialFormula.h"
 #include "factorial.h"
 #include <cmath>
 
-float algorithms::poisson::factorial::pmf(float lambda, unsigned int k){
-    return std::exp(-lambda)*std::pow(lambda, k)/algorithms::aritmetica::factorial(k);
-}
+using algorithms::aritmetica::factorial;
+using std::pow;
+using std::exp;
 
-float algorithms::poisson::factorial::cdf(float lambda, unsigned int k){
-    int res = 0;
-    for(int i = 0; i <= k; i++){
-        res += algorithms::poisson::factorial::pmf(lambda, i);
+namespace algorithms::poisson::factorialFormula {
+    float pmf(float lambda, unsigned int k){
+        return exp(-lambda)*pow(lambda, k)/factorial(k);
     }
-    return res;
+
+    float cdf(float lambda, unsigned int k){
+        int res = 0;
+        for(int i = 0; i <= k; i++){
+            res += pmf(lambda, i);
+        }
+        return res;
+    }
 }

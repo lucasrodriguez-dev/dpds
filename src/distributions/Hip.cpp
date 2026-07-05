@@ -1,6 +1,9 @@
 #include "Hip.h"
 #include "HipergeometricaAlgorithms.h"
 
+using algorithms::hipergeometrica::combinaciones::pmf;
+using algorithms::hipergeometrica::combinaciones::cdf;
+
 Hip::Hip(unsigned int n, unsigned int N,unsigned int K) {
     if(n > N || K > N){
         throw ParametroInvalidoException("Tanto el tamaño de la muestra como la cantidad de distinguidos deben ser menores o iguales que la población total");
@@ -20,11 +23,11 @@ float Hip::evaluar(float x) const {
     if(x < 0 || std::floor(x) != x){
         return 0;
     }
-    return algorithms::hipergeometrica::combinaciones::pmf(sampleSize, totalSize, distinguishedSize, x);
+    return pmf(sampleSize, totalSize, distinguishedSize, x);
 }
 float Hip::distribucionAcumulada(float x) const {
     if(x < 0){
         return 0;
     }
-    return algorithms::hipergeometrica::combinaciones::cdf(sampleSize, totalSize, distinguishedSize, x);
+    return cdf(sampleSize, totalSize, distinguishedSize, x);
 }

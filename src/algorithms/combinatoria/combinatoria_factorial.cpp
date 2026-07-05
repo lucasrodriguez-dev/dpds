@@ -1,6 +1,10 @@
 #include "factorial.h"
-#include "combinacion_factorial.h"
+#include "combinacion_factoriales.h"
 
-unsigned long long algorithms::combinatoria::factorial::combinacion(unsigned int n, unsigned int k) {
-    return algorithms::aritmetica::factorial(n)/(algorithms::aritmetica::factorial(k)*algorithms::aritmetica::factorial(n-k));
+using algorithms::aritmetica::factorial;
+
+namespace algorithms::combinatoria::factoriales {
+    unsigned long long combinacion(unsigned int n, unsigned int k) {
+        return factorial(n)/(factorial(k)*factorial(n-k));
+    }
 }
