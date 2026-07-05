@@ -16,7 +16,7 @@ class VariableAleatoria {
         DTVariableAleatoria getDT() const;
         float simular() const;
         float consultarPropiedad(PropiedadNumerica) const;
-        float densidad(float) const;
+        float evaluar(float) const;
         float distribucionAcumulada(float) const;
 };
 

@@ -1,6 +1,10 @@
 #include "DTEvento.h"
+#include "ParametroInvalidoException.h"
 
 DTEvento::DTEvento(std::string nombre, float probabilidad) {
+    if(probabilidad < 0 || probabilidad > 1){
+        throw ParametroInvalidoException("La probabilidad debe pertenecer al intervalo [0,1]");
+    }
     this->nombre = nombre;
     this->probabilidad = probabilidad;
 }
