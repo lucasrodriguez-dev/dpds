@@ -1,5 +1,6 @@
 #include "Hip.h"
 #include "HipergeometricaAlgorithms.h"
+#include "Ber.h"
 
 using algorithms::hipergeometrica::combinaciones::pmf;
 using algorithms::hipergeometrica::combinaciones::cdf;
@@ -11,6 +12,22 @@ Hip::Hip(unsigned int n, unsigned int N,unsigned int K) {
     this->sampleSize = n;
     this->totalSize = N;
     this->distinguishedSize = K;
+}
+
+float Hip::simular() const {
+    int distinguidosExtraidos = 0;
+    int totalRestante = totalSize;
+    int distinguidosRestantes = distinguishedSize;
+    for(int i=0; i<sampleSize; i++){
+        float probabilidadDistinguido = distinguidosRestantes/totalRestante;
+        Ber esDistinguido(probabilidadDistinguido);
+        if(esDistinguido.simular() == 1){
+            distinguidosExtraidos++;
+            distinguidosRestantes--;
+        }
+        totalRestante--;
+    }
+    return distinguidosExtraidos;
 }
 
 float Hip::esperanza() const {

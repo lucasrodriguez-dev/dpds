@@ -9,6 +9,7 @@ class Normal: public Distribucion {
         float sigmaSquare;
     public:
         Normal(float,float);
+        float simular() const;
         float esperanza() const;
         float varianza() const;
         float evaluar(float) const;

@@ -15,6 +15,7 @@ namespace algorithms::simulacion::lineal {
                 return i;
             }
         }
+        //como u pertenece a [0,1] y la suma de probabilidades es 1, esto nunca debería suceder. Pero por la representación de punto flotante, podría suceder.
         return size-1;
     }
 }

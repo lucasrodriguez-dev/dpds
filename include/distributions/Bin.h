@@ -9,6 +9,7 @@ class Bin: public Distribucion {
         float p;
     public:
         Bin(unsigned int,float);
+        float simular() const;
         float esperanza() const;
         float varianza() const;
         float evaluar(float) const;

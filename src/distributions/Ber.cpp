@@ -1,10 +1,15 @@
 #include "Ber.h"
+#include "AleatorioAlgorithms.h"
 
 Ber::Ber(float p) {
     if(p < 0 || p > 1){
         throw ParametroInvalidoException("La probabilidad debe pertenecer al intervalo [0,1]");
     }
     this->p = p;
+}
+
+float Ber::simular() const {
+    return algorithms::simulacion::aleatorio::uniforme::generar(0,1) < p;
 }
 
 float Ber::esperanza() const {

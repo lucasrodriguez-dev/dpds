@@ -1,5 +1,6 @@
 #include "BinNeg.h"
 #include "BinomialNegativaAlgorithms.h"
+#include "Ber.h"
 
 BinNeg::BinNeg(int r, float p) {
     if(r < 1){
@@ -10,6 +11,16 @@ BinNeg::BinNeg(int r, float p) {
     }
     this->r = r;
     this->p = p;
+}
+
+float BinNeg::simular() const {
+    int exitos = 0;
+    int pruebas = 0;
+    while(exitos < r){
+        exitos += Ber(p).simular();
+        pruebas++;
+    }
+    return pruebas;
 }
 
 float BinNeg::esperanza() const {
