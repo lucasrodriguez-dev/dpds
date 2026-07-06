@@ -10,6 +10,7 @@ class ManejadorExperimento {
         ManejadorExperimento();
         std::map<std::string,Experimento*> experimentos;
     public:
+        ~ManejadorExperimento();
         static ManejadorExperimento* getInstancia();
         void altaExperimento(std::string,std::string);
         std::vector<DTExperimento> listarExperimentos() const;

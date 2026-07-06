@@ -7,6 +7,10 @@ VariableAleatoria::VariableAleatoria(std::string id, std::string descripcion, DT
     this->distribucion = FabricaDistribucion::crear(dtdistribucion);
 }
 
+VariableAleatoria::~VariableAleatoria() {
+    delete distribucion;
+}
+
 DTVariableAleatoria VariableAleatoria::getDT() const {
     return DTVariableAleatoria(id, descripcion);
 }

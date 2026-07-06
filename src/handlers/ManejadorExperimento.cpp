@@ -2,6 +2,12 @@
 
 ManejadorExperimento* ManejadorExperimento::instancia = nullptr;
 
+ManejadorExperimento::~ManejadorExperimento() {
+    for(auto& [nombre, experimento]: experimentos){
+        delete experimento;
+    }
+}
+
 ManejadorExperimento* ManejadorExperimento::getInstancia() {
     if(instancia == nullptr){
         instancia = new ManejadorExperimento();
