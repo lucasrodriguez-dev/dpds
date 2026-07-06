@@ -1,4 +1,5 @@
 #include "Uni.h"
+#include "AleatorioAlgorithms.h"
 
 Uni::Uni(float a, float b) {
     if(a >= b){
@@ -8,7 +9,9 @@ Uni::Uni(float a, float b) {
     this->b = b;
 }
 
-float Uni::simular() const {}
+float Uni::simular() const {
+    return algorithms::simulacion::aleatorio::uniforme::generar(a, b);
+}
 
 float Uni::esperanza() const {
     return (a+b)/2;
