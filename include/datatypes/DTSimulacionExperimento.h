@@ -16,5 +16,6 @@ class DTSimulacionExperimento {
         float getFrecuenciaRelativa() const;
         void setFrecuenciaRelativa(float);
 };
+std::ostream& operator<<(std::ostream&, DTSimulacionExperimento);
 
 #endif

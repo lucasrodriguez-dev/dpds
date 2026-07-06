@@ -12,5 +12,6 @@ class DTEvento {
         std::string getNombre() const;
         float getProbabilidad() const;
 };
+std::ostream& operator<<(std::ostream&, DTEvento);
 
 #endif

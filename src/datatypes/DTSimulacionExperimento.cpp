@@ -1,4 +1,5 @@
 #include "DTSimulacionExperimento.h"
+#include <iostream>
 
 DTSimulacionExperimento::DTSimulacionExperimento(DTEvento evento, unsigned int ocurrencias, float frecuenciaRelativa): evento(evento), ocurrencias(ocurrencias), frecuenciaRelativa(frecuenciaRelativa) {}
 DTSimulacionExperimento::DTSimulacionExperimento(DTEvento evento, unsigned int ocurrencias): evento(evento), ocurrencias(ocurrencias) {}
@@ -14,4 +15,9 @@ float DTSimulacionExperimento::getFrecuenciaRelativa() const {
 }
 void DTSimulacionExperimento::setFrecuenciaRelativa(float frecuenciaRelativa) {
     this->frecuenciaRelativa = frecuenciaRelativa;
+}
+
+std::ostream& operator<<(std::ostream& os, DTSimulacionExperimento dt) {
+    os << "Evento: " << dt.getEvento() << ", Ocurrencias: " << dt.getOcurrencias() << ", Frecuencia: " << dt.getFrecuenciaRelativa();
+    return os;
 }

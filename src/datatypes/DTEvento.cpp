@@ -1,5 +1,6 @@
 #include "DTEvento.h"
 #include "ParametroInvalidoException.h"
+#include <iostream>
 
 DTEvento::DTEvento(std::string nombre, float probabilidad) {
     if(probabilidad < 0 || probabilidad > 1){
@@ -14,4 +15,9 @@ std::string DTEvento::getNombre() const {
 }
 float DTEvento::getProbabilidad() const {
     return probabilidad;
+}
+
+std::ostream& operator<<(std::ostream& os, DTEvento dt) {
+    os << dt.getNombre() << " (p=" << dt.getProbabilidad() << ")";
+    return os;
 }
