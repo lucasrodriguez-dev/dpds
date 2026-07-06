@@ -1,9 +1,9 @@
 #ifndef CONTROLADOREXPERIMENTO_H
 #define CONTROLADOREXPERIMENTO_H
 
-#include "ManejadorExperimento.h"
+#include "IExperimento.h"
 
-class ControladorExperimento {
+class ControladorExperimento: public IExperimento {
     private:
         static const std::string EXPERIMENTO_NULO;
         std::string experimentoSeleccionado;
@@ -20,6 +20,7 @@ class ControladorExperimento {
         float consultarPropiedad(std::string,PropiedadNumerica);
         float evaluarVariableAleatoria(std::string,float);
         float evaluarFuncionDistribucionAcumulada(std::string,float);
+        static void liberarMemoria();
 };
 
 #endif

@@ -15,6 +15,7 @@ class ManejadorExperimento {
         void altaExperimento(std::string,std::string);
         std::vector<DTExperimento> listarExperimentos() const;
         Experimento* getExperimento(std::string) const;
+        static void liberarMemoria();
 };
 
 #endif

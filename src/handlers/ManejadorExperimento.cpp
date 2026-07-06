@@ -34,3 +34,8 @@ Experimento* ManejadorExperimento::getExperimento(std::string nombre) const {
     }
     return nullptr;
 }
+
+void ManejadorExperimento::liberarMemoria() {
+    delete instancia;
+    instancia = nullptr;
+}

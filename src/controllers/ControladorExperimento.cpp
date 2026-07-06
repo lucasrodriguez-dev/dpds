@@ -1,4 +1,5 @@
 #include "ControladorExperimento.h"
+#include "ManejadorExperimento.h"
 
 ControladorExperimento::ControladorExperimento() {
     this->experimentoSeleccionado = ControladorExperimento::EXPERIMENTO_NULO;
@@ -74,4 +75,8 @@ float ControladorExperimento::evaluarFuncionDistribucionAcumulada(std::string va
     Experimento* exp = me->getExperimento(experimentoSeleccionado);
     experimentoSeleccionado = ControladorExperimento::EXPERIMENTO_NULO;
     return exp->evaluarDistribucionAcumulada(variableAleatoria, x);
+}
+
+void ControladorExperimento::liberarMemoria() {
+    ManejadorExperimento::liberarMemoria();
 }
