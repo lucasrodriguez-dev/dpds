@@ -1,0 +1,29 @@
+#ifndef IEXPERIMENTO_H
+#define IEXPERIMENTO_H
+
+#include <string>
+#include <vector>
+#include "DTExperimento.h"
+#include "DTEvento.h"
+#include "DTSimulacionExperimento.h"
+#include "DTVariableAleatoria.h"
+#include "DTDistribucion.h"
+#include "PropiedadNumerica.h"
+
+class IExperimento {
+    public:
+        virtual ~IExperimento() {}
+        virtual void altaExperimento(std::string,std::string) = 0;
+        virtual std::vector<DTExperimento> listarExperimentos() const = 0;
+        virtual void asociarEventos(std::string,std::vector<DTEvento>) = 0;
+        virtual DTEvento simularExperimento(std::string) const = 0;
+        virtual std::vector<DTSimulacionExperimento> simularExperimento(std::string,int) const = 0;
+        virtual void altaVariableAleatoria(std::string,std::string,std::string,DTDistribucion) = 0;
+        virtual std::vector<DTVariableAleatoria> listarVariablesAleatorias(std::string) = 0;
+        virtual float simularVariableAleatoria(std::string) = 0;
+        virtual float consultarPropiedad(std::string,PropiedadNumerica) = 0;
+        virtual float evaluarVariableAleatoria(std::string,float) = 0;
+        virtual float evaluarFuncionDistribucionAcumulada(std::string,float) = 0;
+};
+
+#endif
