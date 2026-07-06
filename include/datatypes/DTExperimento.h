@@ -12,5 +12,6 @@ class DTExperimento {
         std::string getNombre() const;
         std::string getDescripcion() const;
 };
+std::ostream& operator<<(std::ostream&, DTExperimento);
 
 #endif
