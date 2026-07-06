@@ -1,4 +1,5 @@
 #include "Exp.h"
+#include "Uni.h"
 
 Exp::Exp(float lambda) {
     if(lambda <= 0){
@@ -7,7 +8,9 @@ Exp::Exp(float lambda) {
     this->lambda = lambda;
 }
 
-float Exp::simular() const {}
+float Exp::simular() const {
+    return -std::log(Uni(0,1).simular())/lambda;
+}
 
 float Exp::esperanza() const {
     return 1/lambda;
