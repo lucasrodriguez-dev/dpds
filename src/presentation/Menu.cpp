@@ -287,3 +287,41 @@ void Menu::simularVariableAleatoria() {
         cout << "Variable no encontrada" << endl;
     }
 }
+
+void Menu::consultarPropiedadNumerica() {
+    IExperimento* controlador = FabricaSistema::getInstancia()->getIExperimento();
+    auto experimentos = controlador->listarExperimentos();
+    listarExperimentos(experimentos);
+    seleccionExperimento seleccion = seleccionarExperimento(experimentos);
+    bool experimentoValido = seleccion.existe;
+    string nombre = seleccion.nombre;
+    auto variablesAleatorias = controlador->listarVariablesAleatorias(nombre);
+    listarVariablesAleatorias(variablesAleatorias);
+    seleccionVariable seleccionV = seleccionarVariable(variablesAleatorias);
+    bool variableValida = seleccionV.existe;
+    string id = seleccionV.id;
+    if(variableValida){
+        int opcion;
+        cout << "¿Qué propiedad desea consultar?: " << endl
+        << "1. Esperanza" << endl
+        << "2. Varianza" << endl 
+        << "3. Desvío" << endl 
+        << "Opción: "; cin >> opcion;
+        switch(opcion){
+            case 1:
+                cout << "E(" << id << ") = " << controlador->consultarPropiedad(id, PropiedadNumerica::esperanza);
+                break;
+            case 2:
+                cout << "V(" << id << ") = " << controlador->consultarPropiedad(id, PropiedadNumerica::varianza);
+                break;
+            case 3:
+                cout << "σ(" << id << ") = " << controlador->consultarPropiedad(id, PropiedadNumerica::desvio);
+                break;
+            default:
+                cout << "Opción no válida";
+                break;
+        }
+    } else {
+        cout << "Variable no encontrada" << endl;
+    }
+}
