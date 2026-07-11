@@ -1,7 +1,7 @@
 #ifndef DTEXP_H
 #define DTEXP_H
 
-#include "DTDistribucion.h"
+#include "datatypes/DTDistribucion.h"
 
 class DTExp: public DTDistribucion {
     private:

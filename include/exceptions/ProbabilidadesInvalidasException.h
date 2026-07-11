@@ -1,7 +1,7 @@
 #ifndef PROBABILIDADESINVALIDASEXCEPTION_H
 #define PROBABILIDADESINVALIDASEXCEPTION_H
 
-#include "DominioException.h"
+#include "exceptions/DominioException.h"
 
 class ProbabilidadesInvalidasException: public DominioException {
     public:

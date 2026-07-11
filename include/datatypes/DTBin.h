@@ -1,7 +1,7 @@
 #ifndef DTBIN_H
 #define DTBIN_H
 
-#include "DTDistribucion.h"
+#include "datatypes/DTDistribucion.h"
 
 class DTBin: public DTDistribucion {
     private:

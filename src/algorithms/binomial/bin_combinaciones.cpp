@@ -1,5 +1,5 @@
-#include "bin_combinaciones.h"
-#include "combinacion_factoriales.h"
+#include "algorithms/binomial/bin_combinaciones.h"
+#include "algorithms/combinatoria/combinacion_factoriales.h"
 #include <cmath>
 
 using algorithms::combinatoria::factoriales::combinacion;

@@ -1,5 +1,5 @@
-#include "hip_combinaciones.h"
-#include "combinacion_factoriales.h"
+#include "algorithms/hipergeometrica/hip_combinaciones.h"
+#include "algorithms/combinatoria/combinacion_factoriales.h"
 #include <cmath>
 
 using algorithms::combinatoria::factoriales::combinacion;

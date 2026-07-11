@@ -1,4 +1,4 @@
-#include "phi.h"
+#include "algorithms/normal/phi.h"
 #include <cmath>
 
 namespace algorithms::normal {

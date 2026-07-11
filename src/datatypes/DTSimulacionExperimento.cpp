@@ -1,4 +1,4 @@
-#include "DTSimulacionExperimento.h"
+#include "datatypes/DTSimulacionExperimento.h"
 #include <iostream>
 
 DTSimulacionExperimento::DTSimulacionExperimento(DTEvento evento, unsigned int ocurrencias, float frecuenciaRelativa): evento(evento), ocurrencias(ocurrencias), frecuenciaRelativa(frecuenciaRelativa) {}

@@ -1,8 +1,8 @@
 #ifndef EXPERIMENTO_H
 #define EXPERIMENTO_H
 
-#include "Evento.h"
-#include "VariableAleatoria.h"
+#include "models/Evento.h"
+#include "models/VariableAleatoria.h"
 #include "datatypes/DTExperimento.h"
 #include "datatypes/DTEvento.h"
 #include "datatypes/DTSimulacionExperimento.h"

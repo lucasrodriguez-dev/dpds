@@ -1,6 +1,6 @@
 #ifndef NORMALALGORITHMS_H
 #define NORMALALGORITHMS_H
 
-#include "phi.h"
+#include "algorithms/normal/phi.h"
 
 #endif

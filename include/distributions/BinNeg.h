@@ -1,7 +1,7 @@
 #ifndef BINNEG_H
 #define BINNEG_H
 
-#include "Distribucion.h"
+#include "distributions/Distribucion.h"
 
 class BinNeg: public Distribucion {
     private:

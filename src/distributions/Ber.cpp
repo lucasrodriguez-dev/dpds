@@ -1,5 +1,5 @@
-#include "Ber.h"
-#include "AleatorioAlgorithms.h"
+#include "distributions/Ber.h"
+#include "algorithms/simulacion/aleatorio/AleatorioAlgorithms.h"
 
 Ber::Ber(float p) {
     if(p < 0 || p > 1){

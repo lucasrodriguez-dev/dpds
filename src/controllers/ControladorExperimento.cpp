@@ -1,5 +1,5 @@
-#include "ControladorExperimento.h"
-#include "ManejadorExperimento.h"
+#include "controllers/ControladorExperimento.h"
+#include "handlers/ManejadorExperimento.h"
 
 ControladorExperimento::ControladorExperimento() {
     this->experimentoSeleccionado = ControladorExperimento::EXPERIMENTO_NULO;

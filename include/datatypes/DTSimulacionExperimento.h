@@ -1,7 +1,7 @@
 #ifndef DTSIMULACIONEXPERIMENTO_H
 #define DTSIMULACIONEXPERIMENTO_H
 
-#include "DTEvento.h"
+#include "datatypes/DTEvento.h"
 
 class DTSimulacionExperimento {
     private:

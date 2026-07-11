@@ -1,5 +1,5 @@
-#include "factorial.h"
-#include "combinacion_factoriales.h"
+#include "algorithms/aritmetica/factorial.h"
+#include "algorithms/combinatoria/combinacion_factoriales.h"
 
 using algorithms::aritmetica::factorial;
 

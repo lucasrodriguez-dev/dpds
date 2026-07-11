@@ -1,6 +1,6 @@
-#include "BinNeg.h"
-#include "BinomialNegativaAlgorithms.h"
-#include "Ber.h"
+#include "distributions/BinNeg.h"
+#include "algorithms/binomialNegativa/BinomialNegativaAlgorithms.h"
+#include "distributions/Ber.h"
 
 BinNeg::BinNeg(int r, float p) {
     if(r < 1){

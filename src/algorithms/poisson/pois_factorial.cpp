@@ -1,5 +1,5 @@
-#include "pois_factorialFormula.h"
-#include "factorial.h"
+#include "algorithms/poisson/pois_factorialFormula.h"
+#include "algorithms/aritmetica/factorial.h"
 #include <cmath>
 
 using algorithms::aritmetica::factorial;

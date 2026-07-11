@@ -1,5 +1,5 @@
-#include "DTEvento.h"
-#include "ParametroInvalidoException.h"
+#include "datatypes/DTEvento.h"
+#include "exceptions/ParametroInvalidoException.h"
 #include <iostream>
 
 DTEvento::DTEvento(std::string nombre, float probabilidad) {

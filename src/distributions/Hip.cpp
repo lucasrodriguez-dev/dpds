@@ -1,6 +1,6 @@
-#include "Hip.h"
-#include "HipergeometricaAlgorithms.h"
-#include "Ber.h"
+#include "distributions/Hip.h"
+#include "algorithms/hipergeometrica/HipergeometricaAlgorithms.h"
+#include "distributions/Ber.h"
 
 using algorithms::hipergeometrica::combinaciones::pmf;
 using algorithms::hipergeometrica::combinaciones::cdf;

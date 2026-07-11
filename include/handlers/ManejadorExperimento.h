@@ -1,7 +1,7 @@
 #ifndef MANEJADOREXPERIMENTO_H
 #define MANEJADOREXPERIMENTO_H
 
-#include "Experimento.h"
+#include "models/Experimento.h"
 #include "datatypes/DTExperimento.h"
 
 class ManejadorExperimento {

@@ -1,5 +1,5 @@
-#include "Evento.h"
-#include "ParametroInvalidoException.h"
+#include "models/Evento.h"
+#include "exceptions/ParametroInvalidoException.h"
 
 Evento::Evento(DTEvento dt) {
     float p = dt.getProbabilidad();

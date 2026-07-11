@@ -1,7 +1,7 @@
 #ifndef BER_H
 #define BER_H
 
-#include "Distribucion.h"
+#include "distributions/Distribucion.h"
 
 class Ber: public Distribucion {
     private:

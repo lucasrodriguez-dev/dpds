@@ -1,4 +1,4 @@
-#include "DTExperimento.h"
+#include "datatypes/DTExperimento.h"
 #include <iostream>
 
 DTExperimento::DTExperimento(std::string nombre,std::string descripcion) {

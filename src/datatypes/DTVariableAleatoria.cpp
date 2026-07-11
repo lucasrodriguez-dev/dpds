@@ -1,4 +1,4 @@
-#include "DTVariableAleatoria.h"
+#include "datatypes/DTVariableAleatoria.h"
 #include <iostream>
 
 DTVariableAleatoria::DTVariableAleatoria(std::string id, std::string descripcion) {

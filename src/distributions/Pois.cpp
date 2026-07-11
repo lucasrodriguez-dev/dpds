@@ -1,5 +1,5 @@
-#include "Pois.h"
-#include "PoissonAlgorithms.h"
+#include "distributions/Pois.h"
+#include "algorithms/poisson/PoissonAlgorithms.h"
 #include "AleatorioAlgorithms.h"
 
 Pois::Pois(float lambda) {

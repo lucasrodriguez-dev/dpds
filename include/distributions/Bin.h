@@ -1,7 +1,7 @@
 #ifndef BIN_H
 #define BIN_H
 
-#include "Distribucion.h"
+#include "distributions/Distribucion.h"
 
 class Bin: public Distribucion {
     private:

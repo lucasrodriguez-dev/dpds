@@ -1,4 +1,4 @@
-#include "bin_recurrencia.h"
+#include "algorithms/binomial/bin_recurrencia.h"
 #include <cmath>
 
 using std::pow;

@@ -1,4 +1,4 @@
-#include "DTBinNeg.h"
+#include "datatypes/DTBinNeg.h"
 
 DTBinNeg::DTBinNeg(unsigned int r,float p) {
     if(r < 1){

@@ -1,5 +1,5 @@
-#include "simulacion_lineal.h"
-#include "aleatorio_uniforme.h"
+#include "algorithms/simulacion/simulacion_lineal.h"
+#include "algorithms/simulacion/aleatorio/aleatorio_uniforme.h"
 
 using std::vector;
 using algorithms::simulacion::aleatorio::uniforme::generar;

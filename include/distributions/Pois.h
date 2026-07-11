@@ -1,7 +1,7 @@
 #ifndef POIS_H
 #define POIS_H
 
-#include "Distribucion.h"
+#include "distributions/Distribucion.h"
 
 class Pois: public Distribucion {
     private:

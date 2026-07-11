@@ -3,12 +3,12 @@
 
 #include <string>
 #include <vector>
-#include "DTExperimento.h"
-#include "DTEvento.h"
-#include "DTSimulacionExperimento.h"
-#include "DTVariableAleatoria.h"
-#include "DTDistribucion.h"
-#include "PropiedadNumerica.h"
+#include "datatypes/DTExperimento.h"
+#include "datatypes/DTEvento.h"
+#include "datatypes/DTSimulacionExperimento.h"
+#include "datatypes/DTVariableAleatoria.h"
+#include "datatypes/DTDistribucion.h"
+#include "datatypes/PropiedadNumerica.h"
 
 class IExperimento {
     public:

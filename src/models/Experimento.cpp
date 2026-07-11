@@ -1,5 +1,5 @@
-#include "Experimento.h"
-#include "SimulacionAlgorithms.h"
+#include "models/Experimento.h"
+#include "algorithms/simulacion/SimulacionAlgorithms.h"
 
 Experimento::Experimento(std::string nombre, std::string descripcion) {
     this->nombre = nombre;

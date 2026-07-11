@@ -1,14 +1,14 @@
-#include "Menu.h"
-#include "FabricaSistema.h"
-#include "CargaDatos.h"
+#include "presentation/Menu.h"
+#include "factories/FabricaSistema.h"
+#include "testing/CargaDatos.h"
 #include <iostream>
-#include "DTBer.h"
-#include "DTBin.h"
-#include "DTHip.h"
-#include "DTBinNeg.h"
-#include "DTPois.h"
-#include "DTUni.h"
-#include "DTExp.h"
+#include "datatypes/DTBer.h"
+#include "datatypes/DTBin.h"
+#include "datatypes/DTHip.h"
+#include "datatypes/DTBinNeg.h"
+#include "datatypes/DTPois.h"
+#include "datatypes/DTUni.h"
+#include "datatypes/DTExp.h"
 
 using std::string, std::cout, std::cin, std::getline, std::endl, std::vector;
 

@@ -1,5 +1,5 @@
-#include "Exp.h"
-#include "Uni.h"
+#include "distributions/Exp.h"
+#include "distributions/Uni.h"
 
 Exp::Exp(float lambda) {
     if(lambda <= 0){

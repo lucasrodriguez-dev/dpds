@@ -1,7 +1,6 @@
 #ifndef DISTRIBUCION_H
 #define DISTRIBUCION_H
 
-#include "datatypes/DTDistribucion.h"
 #include <cmath>
 
 class Distribucion {

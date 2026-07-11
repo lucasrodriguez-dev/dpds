@@ -1,7 +1,7 @@
 #ifndef EXP_H
 #define EXP_H
 
-#include "Distribucion.h"
+#include "distributions/Distribucion.h"
 
 class Exp: public Distribucion {
     private:

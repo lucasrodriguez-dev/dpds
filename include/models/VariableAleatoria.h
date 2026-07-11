@@ -1,7 +1,7 @@
 #ifndef VARIABLEALEATORIA_H
 #define VARIABLEALEATORIA_H
 
-#include "Distribucion.h"
+#include "distributions/Distribucion.h"
 #include "datatypes/DTDistribucion.h"
 #include "datatypes/DTVariableAleatoria.h"
 #include "datatypes/PropiedadNumerica.h"

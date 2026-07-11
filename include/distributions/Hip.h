@@ -1,7 +1,7 @@
 #ifndef HIP_H
 #define HIP_H
 
-#include "Distribucion.h"
+#include "distributions/Distribucion.h"
 
 class Hip: public Distribucion {
     private:

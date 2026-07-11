@@ -1,7 +1,7 @@
 #ifndef NORMAL_H
 #define NORMAL_H
 
-#include "Distribucion.h"
+#include "distributions/Distribucion.h"
 
 class Normal: public Distribucion {
     private:

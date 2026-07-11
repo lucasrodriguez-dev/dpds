@@ -1,7 +1,7 @@
 #ifndef TIPODISTRIBUCIONINVALIDAEXCEPTION_H
 #define TIPODISTRIBUCIONINVALIDAEXCEPTION_H
 
-#include "DominioException.h"
+#include "exceptions/DominioException.h"
 
 class TipoDistribucionInvalidaException: public DominioException {
     public:

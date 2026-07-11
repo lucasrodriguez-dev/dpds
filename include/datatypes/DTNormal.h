@@ -1,7 +1,7 @@
 #ifndef DTNORMAL_H
 #define DTNORMAL_H
 
-#include "DTDistribucion.h"
+#include "datatypes/DTDistribucion.h"
 
 class DTNormal: public DTDistribucion {
     private:

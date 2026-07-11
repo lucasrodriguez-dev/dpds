@@ -1,7 +1,7 @@
 #ifndef DTPOIS_H
 #define DTPOIS_H
 
-#include "DTDistribucion.h"
+#include "datatypes/DTDistribucion.h"
 
 class DTPois: public DTDistribucion {
     private:

@@ -1,5 +1,5 @@
-#include "Uni.h"
-#include "AleatorioAlgorithms.h"
+#include "distributions/Uni.h"
+#include "algorithms/simulacion/aleatorio/AleatorioAlgorithms.h"
 
 Uni::Uni(float a, float b) {
     if(a >= b){

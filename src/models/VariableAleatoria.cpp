@@ -1,5 +1,5 @@
-#include "VariableAleatoria.h"
-#include "FabricaDistribucion.h"
+#include "models/VariableAleatoria.h"
+#include "factories/FabricaDistribucion.h"
 
 VariableAleatoria::VariableAleatoria(std::string id, std::string descripcion, DTDistribucion dtdistribucion) {
     this->id = id;

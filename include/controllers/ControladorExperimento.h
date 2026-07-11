@@ -1,7 +1,7 @@
 #ifndef CONTROLADOREXPERIMENTO_H
 #define CONTROLADOREXPERIMENTO_H
 
-#include "IExperimento.h"
+#include "interfaces/IExperimento.h"
 
 class ControladorExperimento: public IExperimento {
     private:

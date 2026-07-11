@@ -1,6 +1,6 @@
-#include "Bin.h"
-#include "BinomialAlgorithms.h"
-#include "Ber.h"
+#include "distributions/Bin.h"
+#include "algorithms/binomial/BinomialAlgorithms.h"
+#include "distributions/Ber.h"
 
 Bin::Bin(unsigned int n,float p) {
     if(p < 0 || p > 1){
