@@ -325,3 +325,24 @@ void Menu::consultarPropiedadNumerica() {
         cout << "Variable no encontrada" << endl;
     }
 }
+
+void Menu::evaluarVariableAleatoria() {
+    IExperimento* controlador = FabricaSistema::getInstancia()->getIExperimento();
+    auto experimentos = controlador->listarExperimentos();
+    listarExperimentos(experimentos);
+    seleccionExperimento seleccion = seleccionarExperimento(experimentos);
+    bool experimentoValido = seleccion.existe;
+    string nombre = seleccion.nombre;
+    auto variablesAleatorias = controlador->listarVariablesAleatorias(nombre);
+    listarVariablesAleatorias(variablesAleatorias);
+    seleccionVariable seleccionV = seleccionarVariable(variablesAleatorias);
+    bool variableValida = seleccionV.existe;
+    string id = seleccionV.id;
+    if(variableValida){
+        float x;
+        cout << "Ingrese en qué valor desea evaluar a " << id << ": " << endl; cin >> x;
+        cout << "P(" << id << " = " << x << ") ≈ " << controlador->evaluarVariableAleatoria(id, x);
+    } else {
+        cout << "Variable no encontrada" << endl;
+    }
+}
