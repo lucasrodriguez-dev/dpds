@@ -12,6 +12,62 @@
 
 using std::string, std::cout, std::cin, std::getline, std::endl, std::vector;
 
+void Menu::mostrarMenu() {
+    int opcion = -1;
+    while (opcion != 10) {
+        cout << "\n=== MENU PRINCIPAL ===" << endl;
+        cout << "1. Crear experimento" << endl;
+        cout << "2. Definir eventos" << endl;
+        cout << "3. Simular experimento" << endl;
+        cout << "4. Crear variable aleatoria" << endl;
+        cout << "5. Simular variable aleatoria" << endl;
+        cout << "6. Consultar propiedad de variable aleatoria" << endl;
+        cout << "7. Evaluar variable aleatoria" << endl;
+        cout << "8. Evaluar distribución acumulada de variable aleatoria" << endl;
+        //cout << "9. Cargar Datos" << endl;
+        cout << "10. Salir" << endl;
+        cout << "Ingrese una opcion: ";
+        cin >> opcion;
+
+        switch (opcion) {
+            case 1:
+                crearExperimento();
+                break;
+            case 2:
+                definirEventos();
+                break;
+            case 3:
+                simularExperimento();
+                break;
+            case 4:
+                crearVariableAleatoria();
+                break;
+            case 5:
+                simularVariableAleatoria();
+                break;
+            case 6:
+                consultarPropiedadNumerica();
+                break;
+            case 7:
+                evaluarVariableAleatoria();
+                break;
+            case 8:
+                evaluarFuncionDistribucionVariableAleatoria();
+                break;
+            /*case 9:
+                cargarDatos();
+                break;
+                */
+            case 10:
+                cout << "Saliendo del sistema..." << endl;
+                liberarMemoria();
+                break;
+            default:
+                cout << "Opción inválida." << endl;
+        }
+    }
+}
+
 struct seleccionExperimento {
     string nombre;
     bool existe;

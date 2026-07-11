@@ -12,7 +12,7 @@ private:
     void consultarPropiedadNumerica();
     void evaluarVariableAleatoria();
     void evaluarFuncionDistribucionVariableAleatoria();
-    void cargarDatos();
+    //void cargarDatos();
     void liberarMemoria();
 public:
     void mostrarMenu();
