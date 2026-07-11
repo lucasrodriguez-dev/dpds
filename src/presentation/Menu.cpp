@@ -4,6 +4,11 @@
 #include <iostream>
 #include "DTBer.h"
 #include "DTBin.h"
+#include "DTHip.h"
+#include "DTBinNeg.h"
+#include "DTPois.h"
+#include "DTUni.h"
+#include "DTExp.h"
 
 using std::string, std::cout, std::cin, std::getline, std::endl, std::vector;
 
@@ -118,6 +123,63 @@ void Menu::realizarMultiplesSimulaciones() {
     delete controlador;  
 }
 
+DTDistribucion* leerBernoulli() {
+    float p;
+    cout << "Ingrese la probabilidad de éxito: "; cin >> p;
+    //validar p
+    return new DTBer(p);
+}
+DTDistribucion* leerBinomial() {
+    int n;
+    float p;
+    cout << "Ingrese la cantidad ensayos: "; cin >> n;
+    cout << "Ingrese la probabilidad de éxito en cada ensayo: "; cin >> p;
+    //validar n y p
+    return new DTBin(n,p);
+}
+DTDistribucion* leerHipergeometrica() {
+    int N;
+    int K;
+    int n;
+    cout << "Ingrese el tamaño total de la población: "; cin >> N;
+    cout << "Ingrese la cantidad de distinguidos: "; cin >> K;
+    cout << "Ingrese el tamaño de la muestra: "; cin >> n;
+    //validar n,N,K
+    return new DTHip(n,N,K);
+}
+DTDistribucion* leerBinomialNegativa() {
+    int r;
+    float p;
+    cout << "Ingrese la cantidad de éxitos: "; cin >> r;
+    cout << "Ingrese la probabilidad de éxito: "; cin >> p;
+    //validar r y p
+    return new DTBinNeg(r,p);
+}
+DTDistribucion* leerPoisson() {
+    float lambda;
+    cout << "Ingrese el valor de λ: "; cin >> lambda;
+    //validar lambda
+    return new DTPois(lambda);
+}
+DTDistribucion* leerUniforme() {
+    float a,b;
+    cout << "Ingrese el valor del extremo inferior del intervalo: "; cin >> a;
+    cout << "Ingrese el valor del extremo superior del intervalo: "; cin >> b;
+    //validar a,b
+    return new DTUni(a,b);
+}
+DTDistribucion* leerExponencial() {
+    float lambda;
+    cout << "Ingrese el valor de λ: "; cin >> lambda;
+    //validar lambda
+    return new DTExp(lambda);
+}
+DTDistribucion* leerNormal() {
+    float mu, sigmaSquare;
+    cout << "Ingrese el valor de μ: "; cin >> mu;
+    cout << "Ingrese el valor de σ²: "; cin >> sigmaSquare;
+}
+
 void Menu::crearVariableAleatoria() {
     IExperimento* controlador = FabricaSistema::getInstancia()->getIExperimento();
     auto experimentos = controlador->listarExperimentos();
@@ -142,20 +204,41 @@ void Menu::crearVariableAleatoria() {
     << "7. Exponencial" << endl 
     << "8. Normal" << endl
     << "Opción: "; cin >> opcion;
-    if(opcion == 1){
-        float p;
-        cout << "Ingrese la probabilidad de éxito: "; cin >> p;
-        //validar p
-        distribucion = new DTBer(p);
-        controlador->altaVariableAleatoria(nombre, id, descripcion, *(distribucion));
-    }
-    if(opcion == 2){
-        int n;
-        float p;
-        cout << "Ingrese la cantidad ensayos: "; cin >> n;
-        cout << "Ingrese la probabilidad de éxito en cada ensayo: "; cin >> p;
-        //validar n y p
-        distribucion = new DTBin(n,p);
-        controlador->altaVariableAleatoria(nombre, id, descripcion, *(distribucion));
+    switch(opcion){
+        case 1:
+            DTDistribucion* distribucion = leerBernoulli();
+            controlador->altaVariableAleatoria(nombre, id, descripcion, *(distribucion));
+            break;
+        case 2:
+            DTDistribucion* distribucion = leerBinomial();
+            controlador->altaVariableAleatoria(nombre, id, descripcion, *(distribucion));
+            break;
+        case 3:
+            DTDistribucion* distribucion = leerHipergeometrica();
+            controlador->altaVariableAleatoria(nombre, id, descripcion, *(distribucion));
+            break;
+        case 4:
+            DTDistribucion* distribucion = leerBinomialNegativa();
+            controlador->altaVariableAleatoria(nombre, id, descripcion, *(distribucion));
+            break;
+        case 5:
+            DTDistribucion* distribucion = leerPoisson();
+            controlador->altaVariableAleatoria(nombre, id, descripcion, *(distribucion));
+            break;
+        case 6:
+            DTDistribucion* distribucion = leerUniforme();
+            controlador->altaVariableAleatoria(nombre, id, descripcion, *(distribucion));
+            break;
+        case 7:
+            DTDistribucion* distribucion = leerExponencial();
+            controlador->altaVariableAleatoria(nombre, id, descripcion, *(distribucion));
+            break;
+        case 8:
+            DTDistribucion* distribucion = leerNormal();
+            controlador->altaVariableAleatoria(nombre, id, descripcion, *(distribucion));
+            break;
+        default:
+            cout << "Opción no válida";
+            break;
     }
 }
