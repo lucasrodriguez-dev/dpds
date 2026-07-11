@@ -12,5 +12,6 @@ class DTVariableAleatoria {
         std::string getId() const;
         std::string getDescripcion() const;
 };
+std::ostream& operator<<(std::ostream&, DTVariableAleatoria);
 
 #endif

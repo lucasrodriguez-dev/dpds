@@ -16,10 +16,20 @@ struct seleccionExperimento {
     string nombre;
     bool existe;
 };
+struct seleccionVariable {
+    string id;
+    bool existe;
+};
 
 void listarExperimentos(vector<DTExperimento> experimentos){
     for(auto experimento: experimentos){
         cout << experimento << endl;
+    }
+}
+
+void listarVariablesAleatorias(vector<DTVariableAleatoria> variables){
+    for(auto variable: variables){
+        cout << variable << endl;
     }
 }
 
@@ -36,6 +46,22 @@ seleccionExperimento seleccionarExperimento(vector<DTExperimento> experimentos){
     seleccionExperimento retorno;
     retorno.existe = existe;
     retorno.nombre = nombre;
+    return retorno;
+}
+
+seleccionVariable seleccionarVariable(vector<DTVariableAleatoria> variables){
+    string id;
+    cout << "Ingrese el id de la variable aleatoria a simular: "; getline(cin, id);
+    bool existe = false;
+    for(auto variable: variables){
+        if(variable.getId() == id){
+            existe = true;
+            break;
+        }
+    }
+    seleccionVariable retorno;
+    retorno.existe = existe;
+    retorno.id = id;
     return retorno;
 }
 
@@ -240,5 +266,24 @@ void Menu::crearVariableAleatoria() {
         default:
             cout << "Opción no válida";
             break;
+    }
+}
+
+void Menu::simularVariableAleatoria() {
+    IExperimento* controlador = FabricaSistema::getInstancia()->getIExperimento();
+    auto experimentos = controlador->listarExperimentos();
+    listarExperimentos(experimentos);
+    seleccionExperimento seleccion = seleccionarExperimento(experimentos);
+    bool experimentoValido = seleccion.existe;
+    string nombre = seleccion.nombre;
+    auto variablesAleatorias = controlador->listarVariablesAleatorias(nombre);
+    listarVariablesAleatorias(variablesAleatorias);
+    seleccionVariable seleccionV = seleccionarVariable(variablesAleatorias);
+    bool variableValida = seleccionV.existe;
+    string id = seleccionV.id;
+    if(variableValida){
+        cout << "Valor simulado: " << controlador->simularVariableAleatoria(id) << endl;
+    } else {
+        cout << "Variable no encontrada" << endl;
     }
 }
