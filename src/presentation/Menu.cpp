@@ -346,3 +346,24 @@ void Menu::evaluarVariableAleatoria() {
         cout << "Variable no encontrada" << endl;
     }
 }
+
+void Menu::evaluarFuncionDistribucionVariableAleatoria() {
+    IExperimento* controlador = FabricaSistema::getInstancia()->getIExperimento();
+    auto experimentos = controlador->listarExperimentos();
+    listarExperimentos(experimentos);
+    seleccionExperimento seleccion = seleccionarExperimento(experimentos);
+    bool experimentoValido = seleccion.existe;
+    string nombre = seleccion.nombre;
+    auto variablesAleatorias = controlador->listarVariablesAleatorias(nombre);
+    listarVariablesAleatorias(variablesAleatorias);
+    seleccionVariable seleccionV = seleccionarVariable(variablesAleatorias);
+    bool variableValida = seleccionV.existe;
+    string id = seleccionV.id;
+    if(variableValida){
+        float x;
+        cout << "Ingrese en qué valor desea evaluar la distribución acumulada de " << id << ": " << endl; cin >> x;
+        cout << "P(" << id << " ≤ " << x << ") ≈ " << controlador->evaluarFuncionDistribucionAcumulada(id, x);
+    } else {
+        cout << "Variable no encontrada" << endl;
+    }
+}
