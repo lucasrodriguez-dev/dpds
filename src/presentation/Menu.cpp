@@ -1,10 +1,8 @@
 #include "presentation/Menu.h"
 #include "factories/FabricaSistema.h"
 #include "testing/CargaDatos.h"
+#include "presentation/EntradaAlgorithms.h"
 #include <iostream>
-#include <limits>
-#include <algorithm>
-#include <sstream>
 #include "datatypes/DTBer.h"
 #include "datatypes/DTBin.h"
 #include "datatypes/DTHip.h"
@@ -15,15 +13,132 @@
 #include "datatypes/DTNormal.h"
 
 using std::string, std::cout, std::cin, std::getline, std::endl, std::vector, std::stringstream;
+using presentacion::algorithms::entrada::descartarSaltoDeLinea;
+using presentacion::algorithms::entrada::esVacio;
+using presentacion::algorithms::entrada::leerBooleano;
+using presentacion::algorithms::entrada::leerDecimal;
+using presentacion::algorithms::entrada::leerDecimalPositivo;
+using presentacion::algorithms::entrada::leerEntero;
+using presentacion::algorithms::entrada::leerEnteroPositivo;
+using presentacion::algorithms::entrada::leerNoVacio;
+using presentacion::algorithms::entrada::leerProbabilidad;
 
-void descartarSaltoDeLinea() {
-    cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+void listarExperimentos(vector<DTExperimento> experimentos){
+    cout << endl << "EXPERIMENTOS" << endl << ".............." << endl;
+    for(auto experimento: experimentos){
+        cout << experimento << endl;
+    }
+    cout << ".............." << endl;
+}
+
+void listarVariablesAleatorias(vector<DTVariableAleatoria> variables){
+    for(auto variable: variables){
+        cout << variable << endl;
+    }
+}
+
+DTDistribucion* leerBernoulli() {
+    float p = leerProbabilidad("Ingrese la probabilidad de éxito: ");
+    return new DTBer(p);
+}
+DTDistribucion* leerBinomial() {
+    int n = leerEnteroPositivo("Ingrese la cantidad de ensayos: ");
+    float p = leerProbabilidad("Ingrese la probabilidad de éxito en cada ensayo: ");
+    return new DTBin(n,p);
+}
+DTDistribucion* leerHipergeometrica() {
+    int N = leerEnteroPositivo("Ingrese el tamaño total de la población: ");
+    int K = leerEnteroPositivo("Ingrese la cantidad de distinguidos: ");
+    int n = leerEnteroPositivo("Ingrese el tamaño de la muestra: ");
+    return new DTHip(n,N,K);
+}
+DTDistribucion* leerBinomialNegativa() {
+    int r = leerEnteroPositivo("Ingrese la cantidad de éxitos: ");
+    float p = leerProbabilidad("Ingrese la probabilidad de éxito: ");
+    return new DTBinNeg(r,p);
+}
+DTDistribucion* leerPoisson() {
+    float lambda = leerDecimalPositivo("Ingrese el valor de λ: ");
+    return new DTPois(lambda);
+}
+DTDistribucion* leerUniforme() {
+    float a,b;
+    a = b = 0;
+    while(a == b){
+        cout << "(Los extremos del intervalo deben ser distintos)" << endl;
+        float a = leerDecimal("Ingrese un extremo del intervalo: ");
+        float b = leerDecimal("Ingrese el otro extremo: ");
+    }
+    if (b < a)
+        return new DTUni(b,a);
+    return new DTUni(a,b);
+}
+DTDistribucion* leerExponencial() {
+    float lambda = leerDecimalPositivo("Ingrese el valor de λ: ");
+    return new DTExp(lambda);
+}
+DTDistribucion* leerNormal() {
+    float mu = leerDecimal("Ingrese el valor de μ: ");
+    float sigmaSquare = leerDecimalPositivo("Ingrese el valor de σ²: ");
+    return new DTNormal(mu, sigmaSquare);
+}
+DTDistribucion* leerDistribucion(string mensaje) {
+    while(true) {
+        cout << mensaje << endl 
+            << "1. Bernoulli" << endl
+            << "2. Binomial" << endl 
+            << "3. Hipergeométrica" << endl 
+            << "4. Binomial negativa" << endl 
+            << "5. Poisson" << endl 
+            << "6. Uniforme" << endl 
+            << "7. Exponencial" << endl 
+            << "8. Normal" << endl;
+        int opcion = leerEntero("Opción: ");
+        switch(opcion){
+            case 1: {
+                DTDistribucion* distribucion = leerBernoulli();
+                return distribucion;
+            }
+            case 2: {
+                DTDistribucion* distribucion = leerBinomial();
+                return distribucion;
+            }
+            case 3: {
+                DTDistribucion* distribucion = leerHipergeometrica();
+                return distribucion;
+            }
+            case 4: {
+                DTDistribucion* distribucion = leerBinomialNegativa();
+                return distribucion;
+            }
+            case 5: {
+                DTDistribucion* distribucion = leerPoisson();
+                return distribucion;
+            }
+            case 6: {
+                DTDistribucion* distribucion = leerUniforme();
+                return distribucion;
+            }
+            case 7: {
+                DTDistribucion* distribucion = leerExponencial();
+                return distribucion;
+            }
+            case 8: {
+                DTDistribucion* distribucion = leerNormal();
+                return distribucion;
+            }
+            default: {
+                cout << "Opción no válida.";
+                break;
+            }
+        }
+    }
 }
 
 void Menu::mostrarMenu() {
     int opcion = -1;
     while (opcion != 0) {
-        cout << "\n=== MENU PRINCIPAL ===" << endl;
+        cout << endl << "=== MENU PRINCIPAL ===" << endl;
         cout << "1. Crear experimento" << endl;
         cout << "2. Definir eventos" << endl;
         cout << "3. Simular experimento" << endl;
@@ -88,98 +203,6 @@ void Menu::mostrarMenu() {
                 cout << "Opción inválida." << endl;
             }
         }
-    }
-}
-
-void listarExperimentos(vector<DTExperimento> experimentos){
-    cout << endl << "EXPERIMENTOS" << endl << ".............." << endl;
-    for(auto experimento: experimentos){
-        cout << experimento << endl;
-    }
-    cout << ".............." << endl;
-}
-
-void listarVariablesAleatorias(vector<DTVariableAleatoria> variables){
-    for(auto variable: variables){
-        cout << variable << endl;
-    }
-}
-
-void Menu::liberarMemoria() {
-    FabricaSistema::liberarMemoria();
-    CargaDatos::liberarMemoria();
-}
-
-bool esVacio(string cadena){
-    return std::all_of(cadena.begin(), cadena.end(),
-        [](unsigned char c) {
-            return std::isspace(c);
-        });
-}
-
-string leerNoVacio(string mensaje) {
-    string retorno;
-    do {
-        cout << mensaje; getline(cin, retorno);
-    } while(esVacio(retorno));
-    return retorno;
-}
-int leerEntero(string mensaje) {
-    while (true) {
-        string linea; cout << mensaje; getline(cin, linea);
-        stringstream ss(linea);
-        int numero;
-        if (ss >> numero && ss.eof())
-            return numero;
-        cout << "Debe ingresar un número entero.";
-    }
-}
-int leerEnteroPositivo(string mensaje) {
-    while (true) {
-        string linea; cout << mensaje; getline(cin, linea);
-        stringstream ss(linea);
-        int numero;
-        if (ss >> numero && ss.eof() && numero > 0)
-            return numero;
-        cout << "Debe ingresar un número entero positivo.";
-    }
-}
-float leerDecimal(string mensaje) {
-    while (true) {
-        string linea; cout << mensaje; getline(cin, linea); std::replace(linea.begin(), linea.end(), ',', '.');
-        stringstream ss(linea);
-        float numero;
-        if (ss >> numero && ss.eof())
-            return numero;
-        cout << "Debe ingresar un número decimal.";
-    }
-}
-float leerDecimalPositivo(string mensaje) {
-    while (true) {
-        string linea; cout << mensaje; getline(cin, linea); std::replace(linea.begin(), linea.end(), ',', '.');
-        stringstream ss(linea);
-        float numero;
-        if (ss >> numero && ss.eof() && numero > 0)
-            return numero;
-        cout << "Debe ingresar un número decimal positivo.";
-    }
-}
-float leerProbabilidad(string mensaje) {
-    while(true) {
-        float p = leerDecimal(mensaje);
-        if(0 <= p && p <= 1)
-            return p;
-        cout << "La probabilidad debe estar entre 0 y 1.";
-    }
-}
-bool leerBooleano(string mensaje) {
-    while (true) {
-        string linea; cout << mensaje; getline(cin, linea);
-        stringstream ss(linea);
-        int numero;
-        if (ss >> numero && ss.eof())
-            return numero == 1;
-        cout << "Debe ingresar 1 o 0.";
     }
 }
 
@@ -258,105 +281,6 @@ void Menu::realizarMultiplesSimulaciones() {
         }
     }
     delete controlador;  
-}
-
-DTDistribucion* leerBernoulli() {
-    float p = leerProbabilidad("Ingrese la probabilidad de éxito: ");
-    return new DTBer(p);
-}
-DTDistribucion* leerBinomial() {
-    int n = leerEnteroPositivo("Ingrese la cantidad de ensayos: ");
-    float p = leerProbabilidad("Ingrese la probabilidad de éxito en cada ensayo: ");
-    return new DTBin(n,p);
-}
-DTDistribucion* leerHipergeometrica() {
-    int N = leerEnteroPositivo("Ingrese el tamaño total de la población: ");
-    int K = leerEnteroPositivo("Ingrese la cantidad de distinguidos: ");
-    int n = leerEnteroPositivo("Ingrese el tamaño de la muestra: ");
-    return new DTHip(n,N,K);
-}
-DTDistribucion* leerBinomialNegativa() {
-    int r = leerEnteroPositivo("Ingrese la cantidad de éxitos: ");
-    float p = leerProbabilidad("Ingrese la probabilidad de éxito: ");
-    return new DTBinNeg(r,p);
-}
-DTDistribucion* leerPoisson() {
-    float lambda = leerDecimalPositivo("Ingrese el valor de λ: ");
-    return new DTPois(lambda);
-}
-DTDistribucion* leerUniforme() {
-    float a,b;
-    a = b = 0;
-    while(a == b){
-        cout << "(Los extremos del intervalo deben ser distintos)" << endl;
-        float a = leerDecimal("Ingrese un extremo del intervalo: ");
-        float b = leerDecimal("Ingrese el otro extremo: ");
-    }
-    if (b < a)
-        return new DTUni(b,a);
-    return new DTUni(a,b);
-}
-DTDistribucion* leerExponencial() {
-    float lambda = leerDecimalPositivo("Ingrese el valor de λ: ");
-    return new DTExp(lambda);
-}
-DTDistribucion* leerNormal() {
-    float mu = leerDecimal("Ingrese el valor de μ: ");
-    float sigmaSquare = leerDecimalPositivo("Ingrese el valor de σ²: ");
-    return new DTNormal(mu, sigmaSquare);
-}
-
-DTDistribucion* leerDistribucion(string mensaje) {
-    while(true) {
-        cout << mensaje << endl 
-            << "1. Bernoulli" << endl
-            << "2. Binomial" << endl 
-            << "3. Hipergeométrica" << endl 
-            << "4. Binomial negativa" << endl 
-            << "5. Poisson" << endl 
-            << "6. Uniforme" << endl 
-            << "7. Exponencial" << endl 
-            << "8. Normal" << endl;
-        int opcion = leerEntero("Opción: ");
-        switch(opcion){
-            case 1: {
-                DTDistribucion* distribucion = leerBernoulli();
-                return distribucion;
-            }
-            case 2: {
-                DTDistribucion* distribucion = leerBinomial();
-                return distribucion;
-            }
-            case 3: {
-                DTDistribucion* distribucion = leerHipergeometrica();
-                return distribucion;
-            }
-            case 4: {
-                DTDistribucion* distribucion = leerBinomialNegativa();
-                return distribucion;
-            }
-            case 5: {
-                DTDistribucion* distribucion = leerPoisson();
-                return distribucion;
-            }
-            case 6: {
-                DTDistribucion* distribucion = leerUniforme();
-                return distribucion;
-            }
-            case 7: {
-                DTDistribucion* distribucion = leerExponencial();
-                return distribucion;
-            }
-            case 8: {
-                DTDistribucion* distribucion = leerNormal();
-                return distribucion;
-            }
-            default: {
-                cout << "Opción no válida.";
-                break;
-            }
-        }
-    }
 }
 
 void Menu::crearVariableAleatoria() {
@@ -482,4 +406,9 @@ void Menu::evaluarFuncionDistribucionVariableAleatoria() {
             cout << "Ocurrió un error: " << e.what() << endl;
         }
     }
+}
+
+void Menu::liberarMemoria() {
+    FabricaSistema::liberarMemoria();
+    CargaDatos::liberarMemoria();
 }
