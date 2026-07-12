@@ -9,6 +9,7 @@
 #include "datatypes/DTVariableAleatoria.h"
 #include "datatypes/DTDistribucion.h"
 #include "datatypes/PropiedadNumerica.h"
+#include "exceptions/DominioException.h"
 
 class IExperimento {
     public:

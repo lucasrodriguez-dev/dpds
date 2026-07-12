@@ -37,6 +37,10 @@ Experimento* ManejadorExperimento::getExperimento(std::string nombre) const {
     return nullptr;
 }
 
+bool ManejadorExperimento::existeExperimento(std::string nombre) const {
+    return getExperimento(nombre) != nullptr;
+}
+
 void ManejadorExperimento::liberarMemoria() {
     delete instancia;
     instancia = nullptr;

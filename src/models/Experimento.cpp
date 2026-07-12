@@ -6,27 +6,14 @@ Experimento::Experimento(std::string nombre, std::string descripcion) {
     this->descripcion = descripcion;
 }
 
-bool Experimento::eventosValidos(std::vector<DTEvento> dteventos) {
-    float suma = 0;
-    for(auto dt: dteventos){
-        suma += dt.getProbabilidad();
-    }
-    return suma == 1;
-}
-
 DTExperimento Experimento::getDT() {
     return DTExperimento(nombre, descripcion);
 }
 
-bool Experimento::asociarEventos(std::vector<DTEvento> dteventos) {
-    bool ok = eventosValidos(dteventos);
-    if(!ok){
-        return false;
-    }
+void Experimento::asociarEventos(std::vector<DTEvento> dteventos) {
     for(auto dt: dteventos){
         eventos.insert({dt.getNombre(), Evento(dt)});
     }
-    return true;
 }
 
 DTEvento Experimento::simular() const {
@@ -51,6 +38,10 @@ std::vector<DTSimulacionExperimento> Experimento::simular(int cantidadSimulacion
         retorno.push_back(DTSimulacionExperimento(evento, cantidadApariciones, static_cast<float>(cantidadApariciones)/cantidadSimulaciones));
     }
     return retorno;
+}
+
+bool Experimento::existeVariableAleatoria(std::string id) const {
+    return variablesAleatorias.find(id) != variablesAleatorias.end();
 }
 
 void Experimento::agregarVariableAleatoria(std::string id, std::string descripcion, DTDistribucion* dtdistribucion) {
