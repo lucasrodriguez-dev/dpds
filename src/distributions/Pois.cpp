@@ -1,6 +1,6 @@
 #include "distributions/Pois.h"
 #include "algorithms/poisson/PoissonAlgorithms.h"
-#include "AleatorioAlgorithms.h"
+#include "algorithms/simulacion/aleatorio/AleatorioAlgorithms.h"
 
 Pois::Pois(float lambda) {
     if(lambda <= 0){

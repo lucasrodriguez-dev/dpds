@@ -12,7 +12,7 @@ Bin::Bin(unsigned int n,float p) {
 
 float Bin::simular() const {
     int exitos = 0;
-    for(int i=0; i<=n; i++){
+    for(size_t i=0; i<=n; i++){
         exitos += Ber(p).simular();
     }
     return exitos;

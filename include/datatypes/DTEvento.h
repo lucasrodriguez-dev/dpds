@@ -11,6 +11,7 @@ class DTEvento {
         DTEvento(std::string,float);
         std::string getNombre() const;
         float getProbabilidad() const;
+        bool operator<(DTEvento) const;
 };
 std::ostream& operator<<(std::ostream&, DTEvento);
 

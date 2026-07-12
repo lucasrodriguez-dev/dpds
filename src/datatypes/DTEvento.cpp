@@ -17,6 +17,10 @@ float DTEvento::getProbabilidad() const {
     return probabilidad;
 }
 
+bool DTEvento::operator<(DTEvento otro) const {
+    return this->nombre < otro.nombre;
+}
+
 std::ostream& operator<<(std::ostream& os, DTEvento dt) {
     os << dt.getNombre() << " (p=" << dt.getProbabilidad() << ")";
     return os;

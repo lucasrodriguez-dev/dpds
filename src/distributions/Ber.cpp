@@ -19,10 +19,10 @@ float Ber::varianza() const {
     return p*(1-p);
 }
 float Ber::evaluar(float x) const {
-    if(x = 1){
+    if(x == 1){
         return p;
     }
-    if(x = 0){
+    if(x == 0){
         return 1-p;
     }
     return 0;

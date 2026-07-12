@@ -2,6 +2,8 @@
 
 ManejadorExperimento* ManejadorExperimento::instancia = nullptr;
 
+ManejadorExperimento::ManejadorExperimento() {}
+
 ManejadorExperimento::~ManejadorExperimento() {
     for(auto& [nombre, experimento]: experimentos){
         delete experimento;

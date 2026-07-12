@@ -16,7 +16,7 @@
 #include "datatypes/DTUni.h"
 #include "distributions/Uni.h"
 
-#include "TipoDistribucionInvalidaException.h"
+#include "exceptions/TipoDistribucionInvalidaException.h"
 
 Distribucion* FabricaDistribucion::crear(DTDistribucion& dt) {
     if(auto ber = dynamic_cast<DTBer*>(&dt)){

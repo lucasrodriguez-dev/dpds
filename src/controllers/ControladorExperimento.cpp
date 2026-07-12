@@ -1,6 +1,8 @@
 #include "controllers/ControladorExperimento.h"
 #include "handlers/ManejadorExperimento.h"
 
+const std::string ControladorExperimento::EXPERIMENTO_NULO = "";
+
 ControladorExperimento::ControladorExperimento() {
     this->experimentoSeleccionado = ControladorExperimento::EXPERIMENTO_NULO;
 }

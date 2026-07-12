@@ -24,7 +24,7 @@ bool Experimento::asociarEventos(std::vector<DTEvento> dteventos) {
         return false;
     }
     for(auto dt: dteventos){
-        eventos[dt.getNombre()] = Evento(dt);
+        eventos.insert({dt.getNombre(), Evento(dt)});
     }
     return true;
 }
@@ -54,7 +54,7 @@ std::vector<DTSimulacionExperimento> Experimento::simular(int cantidadSimulacion
 }
 
 void Experimento::agregarVariableAleatoria(std::string id, std::string descripcion, DTDistribucion dtdistribucion) {
-    variablesAleatorias[id] = VariableAleatoria(id, descripcion, dtdistribucion);
+    variablesAleatorias.insert({id, VariableAleatoria(id, descripcion, dtdistribucion)});
 }
 
 std::vector<DTVariableAleatoria> Experimento::listarVariablesAleatorias() const {

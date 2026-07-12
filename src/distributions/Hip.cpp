@@ -18,7 +18,7 @@ float Hip::simular() const {
     int distinguidosExtraidos = 0;
     int totalRestante = totalSize;
     int distinguidosRestantes = distinguishedSize;
-    for(int i=0; i<sampleSize; i++){
+    for(size_t i=0; i<sampleSize; i++){
         float probabilidadDistinguido = distinguidosRestantes/totalRestante;
         Ber esDistinguido(probabilidadDistinguido);
         if(esDistinguido.simular() == 1){

@@ -2,6 +2,8 @@
 #define DISTRIBUCION_H
 
 #include <cmath>
+#include "exceptions/TipoDistribucionInvalidaException.h"
+#include "exceptions/ParametroInvalidoException.h"
 
 class Distribucion {
     public:

@@ -9,6 +9,7 @@
 #include "datatypes/DTPois.h"
 #include "datatypes/DTUni.h"
 #include "datatypes/DTExp.h"
+#include "datatypes/DTNormal.h"
 
 using std::string, std::cout, std::cin, std::getline, std::endl, std::vector;
 
@@ -30,40 +31,51 @@ void Menu::mostrarMenu() {
         cin >> opcion;
 
         switch (opcion) {
-            case 1:
+            case 1: {
                 crearExperimento();
                 break;
-            case 2:
+            }
+            case 2: {
                 definirEventos();
                 break;
-            case 3:
+            }
+            case 3: {
                 simularExperimento();
                 break;
-            case 4:
+            }
+            case 4: {
                 crearVariableAleatoria();
                 break;
-            case 5:
+            }
+            case 5: {
                 simularVariableAleatoria();
                 break;
-            case 6:
+            }
+            case 6: {
                 consultarPropiedadNumerica();
                 break;
-            case 7:
+            }
+            case 7: {
                 evaluarVariableAleatoria();
                 break;
-            case 8:
+            }
+            case 8: {
                 evaluarFuncionDistribucionVariableAleatoria();
                 break;
-            /*case 9:
+            }
+            /*case 9: {
                 cargarDatos();
                 break;
+            }
                 */
-            case 10:
+            case 10: {
                 cout << "Saliendo del sistema..." << endl;
                 liberarMemoria();
                 break;
-            default:
+            }
+            default: {
                 cout << "Opción inválida." << endl;
+            }
         }
     }
 }
@@ -260,6 +272,8 @@ DTDistribucion* leerNormal() {
     float mu, sigmaSquare;
     cout << "Ingrese el valor de μ: "; cin >> mu;
     cout << "Ingrese el valor de σ²: "; cin >> sigmaSquare;
+    //validar mu y sigma
+    return new DTNormal(mu, sigmaSquare);
 }
 
 void Menu::crearVariableAleatoria() {
@@ -268,60 +282,72 @@ void Menu::crearVariableAleatoria() {
     listarExperimentos(experimentos);
     seleccionExperimento seleccion = seleccionarExperimento(experimentos);
     bool experimentoValido = seleccion.existe;
-    string nombre = seleccion.nombre;
-    string id;
-    cout << "Ingrese id de la variable aleatoria: "; getline(cin, id);
-    //validar que no exista la id
-    string descripcion;
-    int opcion;
-    DTDistribucion* distribucion;
-    cout << "Ingrese descripción de la variable aleatoria: "; getline(cin, descripcion);
-    cout << "Ingrese su distribución: " << endl 
-    << "1. Bernoulli" << endl
-    << "2. Binomial" << endl 
-    << "3. Hipergeométrica" << endl 
-    << "4. Binomial negativa" << endl 
-    << "5. Poisson" << endl 
-    << "6. Uniforme" << endl 
-    << "7. Exponencial" << endl 
-    << "8. Normal" << endl
-    << "Opción: "; cin >> opcion;
-    switch(opcion){
-        case 1:
-            DTDistribucion* distribucion = leerBernoulli();
-            controlador->altaVariableAleatoria(nombre, id, descripcion, *(distribucion));
-            break;
-        case 2:
-            DTDistribucion* distribucion = leerBinomial();
-            controlador->altaVariableAleatoria(nombre, id, descripcion, *(distribucion));
-            break;
-        case 3:
-            DTDistribucion* distribucion = leerHipergeometrica();
-            controlador->altaVariableAleatoria(nombre, id, descripcion, *(distribucion));
-            break;
-        case 4:
-            DTDistribucion* distribucion = leerBinomialNegativa();
-            controlador->altaVariableAleatoria(nombre, id, descripcion, *(distribucion));
-            break;
-        case 5:
-            DTDistribucion* distribucion = leerPoisson();
-            controlador->altaVariableAleatoria(nombre, id, descripcion, *(distribucion));
-            break;
-        case 6:
-            DTDistribucion* distribucion = leerUniforme();
-            controlador->altaVariableAleatoria(nombre, id, descripcion, *(distribucion));
-            break;
-        case 7:
-            DTDistribucion* distribucion = leerExponencial();
-            controlador->altaVariableAleatoria(nombre, id, descripcion, *(distribucion));
-            break;
-        case 8:
-            DTDistribucion* distribucion = leerNormal();
-            controlador->altaVariableAleatoria(nombre, id, descripcion, *(distribucion));
-            break;
-        default:
-            cout << "Opción no válida";
-            break;
+    if(experimentoValido) {
+        string nombre = seleccion.nombre;
+        string id;
+        cout << "Ingrese id de la variable aleatoria: "; getline(cin, id);
+        //validar que no exista la id
+        string descripcion;
+        int opcion;
+        cout << "Ingrese descripción de la variable aleatoria: "; getline(cin, descripcion);
+        cout << "Ingrese su distribución: " << endl 
+        << "1. Bernoulli" << endl
+        << "2. Binomial" << endl 
+        << "3. Hipergeométrica" << endl 
+        << "4. Binomial negativa" << endl 
+        << "5. Poisson" << endl 
+        << "6. Uniforme" << endl 
+        << "7. Exponencial" << endl 
+        << "8. Normal" << endl
+        << "Opción: "; cin >> opcion;
+        switch(opcion){
+            case 1: {
+                DTDistribucion* distribucion = leerBernoulli();
+                controlador->altaVariableAleatoria(nombre, id, descripcion, *(distribucion));
+                break;
+            }
+            case 2: {
+                DTDistribucion* distribucion = leerBinomial();
+                controlador->altaVariableAleatoria(nombre, id, descripcion, *(distribucion));
+                break;
+            }
+            case 3: {
+                DTDistribucion* distribucion = leerHipergeometrica();
+                controlador->altaVariableAleatoria(nombre, id, descripcion, *(distribucion));
+                break;
+            }
+            case 4: {
+                DTDistribucion* distribucion = leerBinomialNegativa();
+                controlador->altaVariableAleatoria(nombre, id, descripcion, *(distribucion));
+                break;
+            }
+            case 5: {
+                DTDistribucion* distribucion = leerPoisson();
+                controlador->altaVariableAleatoria(nombre, id, descripcion, *(distribucion));
+                break;
+            }
+            case 6: {
+                DTDistribucion* distribucion = leerUniforme();
+                controlador->altaVariableAleatoria(nombre, id, descripcion, *(distribucion));
+                break;
+            }
+            case 7: {
+                DTDistribucion* distribucion = leerExponencial();
+                controlador->altaVariableAleatoria(nombre, id, descripcion, *(distribucion));
+                break;
+            }
+            case 8: {
+                DTDistribucion* distribucion = leerNormal();
+                controlador->altaVariableAleatoria(nombre, id, descripcion, *(distribucion));
+                break;
+            }
+            default: {
+                cout << "Opción no válida";
+                break;
+            }
+        }
+    } else {
+        cout << "Experimento no encontrado";
     }
 }
 
@@ -331,16 +357,20 @@ void Menu::simularVariableAleatoria() {
     listarExperimentos(experimentos);
     seleccionExperimento seleccion = seleccionarExperimento(experimentos);
     bool experimentoValido = seleccion.existe;
-    string nombre = seleccion.nombre;
-    auto variablesAleatorias = controlador->listarVariablesAleatorias(nombre);
-    listarVariablesAleatorias(variablesAleatorias);
-    seleccionVariable seleccionV = seleccionarVariable(variablesAleatorias);
-    bool variableValida = seleccionV.existe;
-    string id = seleccionV.id;
-    if(variableValida){
-        cout << "Valor simulado: " << controlador->simularVariableAleatoria(id) << endl;
+    if(experimentoValido) {
+        string nombre = seleccion.nombre;
+        auto variablesAleatorias = controlador->listarVariablesAleatorias(nombre);
+        listarVariablesAleatorias(variablesAleatorias);
+        seleccionVariable seleccionV = seleccionarVariable(variablesAleatorias);
+        bool variableValida = seleccionV.existe;
+        string id = seleccionV.id;
+        if(variableValida){
+            cout << "Valor simulado: " << controlador->simularVariableAleatoria(id) << endl;
+        } else {
+            cout << "Variable no encontrada" << endl;
+        }
     } else {
-        cout << "Variable no encontrada" << endl;
+        cout << "Experimento no encontrado";
     }
 }
 
@@ -350,35 +380,43 @@ void Menu::consultarPropiedadNumerica() {
     listarExperimentos(experimentos);
     seleccionExperimento seleccion = seleccionarExperimento(experimentos);
     bool experimentoValido = seleccion.existe;
-    string nombre = seleccion.nombre;
-    auto variablesAleatorias = controlador->listarVariablesAleatorias(nombre);
-    listarVariablesAleatorias(variablesAleatorias);
-    seleccionVariable seleccionV = seleccionarVariable(variablesAleatorias);
-    bool variableValida = seleccionV.existe;
-    string id = seleccionV.id;
-    if(variableValida){
-        int opcion;
-        cout << "¿Qué propiedad desea consultar?: " << endl
-        << "1. Esperanza" << endl
-        << "2. Varianza" << endl 
-        << "3. Desvío" << endl 
-        << "Opción: "; cin >> opcion;
-        switch(opcion){
-            case 1:
-                cout << "E(" << id << ") = " << controlador->consultarPropiedad(id, PropiedadNumerica::esperanza);
-                break;
-            case 2:
-                cout << "V(" << id << ") = " << controlador->consultarPropiedad(id, PropiedadNumerica::varianza);
-                break;
-            case 3:
-                cout << "σ(" << id << ") = " << controlador->consultarPropiedad(id, PropiedadNumerica::desvio);
-                break;
-            default:
-                cout << "Opción no válida";
-                break;
+    if(experimentoValido) {
+        string nombre = seleccion.nombre;
+        auto variablesAleatorias = controlador->listarVariablesAleatorias(nombre);
+        listarVariablesAleatorias(variablesAleatorias);
+        seleccionVariable seleccionV = seleccionarVariable(variablesAleatorias);
+        bool variableValida = seleccionV.existe;
+        string id = seleccionV.id;
+        if(variableValida){
+            int opcion;
+            cout << "¿Qué propiedad desea consultar?: " << endl
+            << "1. Esperanza" << endl
+            << "2. Varianza" << endl 
+            << "3. Desvío" << endl 
+            << "Opción: "; cin >> opcion;
+            switch(opcion){
+                case 1: {
+                    cout << "E(" << id << ") = " << controlador->consultarPropiedad(id, PropiedadNumerica::esperanza);
+                    break;
+                }
+                case 2: {
+                    cout << "V(" << id << ") = " << controlador->consultarPropiedad(id, PropiedadNumerica::varianza);
+                    break;
+                }
+                case 3: {
+                    cout << "σ(" << id << ") = " << controlador->consultarPropiedad(id, PropiedadNumerica::desvio);
+                    break;
+                }
+                default: {
+                    cout << "Opción no válida";
+                    break;
+                }
+            }
+        } else {
+            cout << "Variable no encontrada" << endl;
         }
     } else {
-        cout << "Variable no encontrada" << endl;
+        cout << "Experimento no encontrado";
     }
 }
 
@@ -388,18 +426,22 @@ void Menu::evaluarVariableAleatoria() {
     listarExperimentos(experimentos);
     seleccionExperimento seleccion = seleccionarExperimento(experimentos);
     bool experimentoValido = seleccion.existe;
-    string nombre = seleccion.nombre;
-    auto variablesAleatorias = controlador->listarVariablesAleatorias(nombre);
-    listarVariablesAleatorias(variablesAleatorias);
-    seleccionVariable seleccionV = seleccionarVariable(variablesAleatorias);
-    bool variableValida = seleccionV.existe;
-    string id = seleccionV.id;
-    if(variableValida){
-        float x;
-        cout << "Ingrese en qué valor desea evaluar a " << id << ": " << endl; cin >> x;
-        cout << "P(" << id << " = " << x << ") ≈ " << controlador->evaluarVariableAleatoria(id, x);
+    if(experimentoValido) {
+        string nombre = seleccion.nombre;
+        auto variablesAleatorias = controlador->listarVariablesAleatorias(nombre);
+        listarVariablesAleatorias(variablesAleatorias);
+        seleccionVariable seleccionV = seleccionarVariable(variablesAleatorias);
+        bool variableValida = seleccionV.existe;
+        string id = seleccionV.id;
+        if(variableValida){
+            float x;
+            cout << "Ingrese en qué valor desea evaluar a " << id << ": " << endl; cin >> x;
+            cout << "P(" << id << " = " << x << ") ≈ " << controlador->evaluarVariableAleatoria(id, x);
+        } else {
+            cout << "Variable no encontrada" << endl;
+        }
     } else {
-        cout << "Variable no encontrada" << endl;
+        cout << "Experimento no encontrado";
     }
 }
 
@@ -409,17 +451,21 @@ void Menu::evaluarFuncionDistribucionVariableAleatoria() {
     listarExperimentos(experimentos);
     seleccionExperimento seleccion = seleccionarExperimento(experimentos);
     bool experimentoValido = seleccion.existe;
-    string nombre = seleccion.nombre;
-    auto variablesAleatorias = controlador->listarVariablesAleatorias(nombre);
-    listarVariablesAleatorias(variablesAleatorias);
-    seleccionVariable seleccionV = seleccionarVariable(variablesAleatorias);
-    bool variableValida = seleccionV.existe;
-    string id = seleccionV.id;
-    if(variableValida){
-        float x;
-        cout << "Ingrese en qué valor desea evaluar la distribución acumulada de " << id << ": " << endl; cin >> x;
-        cout << "P(" << id << " ≤ " << x << ") ≈ " << controlador->evaluarFuncionDistribucionAcumulada(id, x);
+    if(experimentoValido) {
+        string nombre = seleccion.nombre;
+        auto variablesAleatorias = controlador->listarVariablesAleatorias(nombre);
+        listarVariablesAleatorias(variablesAleatorias);
+        seleccionVariable seleccionV = seleccionarVariable(variablesAleatorias);
+        bool variableValida = seleccionV.existe;
+        string id = seleccionV.id;
+        if(variableValida){
+            float x;
+            cout << "Ingrese en qué valor desea evaluar la distribución acumulada de " << id << ": " << endl; cin >> x;
+            cout << "P(" << id << " ≤ " << x << ") ≈ " << controlador->evaluarFuncionDistribucionAcumulada(id, x);
+        } else {
+            cout << "Variable no encontrada" << endl;
+        }
     } else {
-        cout << "Variable no encontrada" << endl;
+        cout << "Experimento no encontrado";
     }
 }
