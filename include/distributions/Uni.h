@@ -9,6 +9,7 @@ class Uni: public Distribucion {
         float b;
     public:
         Uni(float,float);
+        Distribucion* clonar() const;
         float simular() const;
         float esperanza() const;
         float varianza() const;

@@ -8,6 +8,9 @@ Pois::Pois(float lambda) {
     }
     this->lambda = lambda;
 }
+Distribucion* Pois::clonar() const {
+    return new Pois(*this);
+};
 
 float Pois::simular() const {
     //algoritmo de Knuth

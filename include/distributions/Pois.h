@@ -8,6 +8,7 @@ class Pois: public Distribucion {
         float lambda;
     public:
         Pois(float);
+        Distribucion* clonar() const;
         float simular() const;
         float esperanza() const;
         float varianza() const;

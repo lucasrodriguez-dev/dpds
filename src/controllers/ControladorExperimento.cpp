@@ -56,8 +56,11 @@ void ControladorExperimento::altaVariableAleatoria(std::string experimento, std:
         throw ElementoNoEncontradoException("No existe un experimento llamado '" + experimento + "'");
     }
     Experimento* exp = me->getExperimento(experimento);
-    if(!exp->existeVariableAleatoria(id)){
-        throw ElementoNoEncontradoException("No existe una variable aleatoria '" + id + "' en el experimento '" + experimento + "'");
+    if(exp->existeVariableAleatoria(id)){
+        throw ElementoNoEncontradoException("Ya existe una variable aleatoria '" + id + "' en el experimento '" + experimento + "'");
+    }
+    if(dtdistribucion == nullptr) {
+        throw TipoDistribucionInvalidaException("La distribución no puede ser nula");
     }
     exp->agregarVariableAleatoria(id, descripcion, dtdistribucion);
 }

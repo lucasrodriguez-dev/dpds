@@ -8,7 +8,7 @@ namespace presentacion::algorithms::entrada {
     bool esVacio(std::string);
     std::string leerNoVacio(std::string);
     int leerEntero(std::string);
-    int leerEnteroPositivo(std::string);
+    unsigned int leerEnteroPositivo(std::string);
     float leerDecimal(std::string);
     float leerDecimalPositivo(std::string);
     float leerProbabilidad(std::string);

@@ -13,6 +13,9 @@ Hip::Hip(unsigned int n, unsigned int N,unsigned int K) {
     this->totalSize = N;
     this->distinguishedSize = K;
 }
+Distribucion* Hip::clonar() const {
+    return new Hip(*this);
+};
 
 float Hip::simular() const {
     int distinguidosExtraidos = 0;

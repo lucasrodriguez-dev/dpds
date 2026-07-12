@@ -8,6 +8,7 @@ class Exp: public Distribucion {
         float lambda;
     public:
         Exp(float);
+        Distribucion* clonar() const;
         float simular() const;
         float esperanza() const;
         float varianza() const;

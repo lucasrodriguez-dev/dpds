@@ -33,7 +33,7 @@ namespace presentacion::algorithms::entrada {
             cout << "Debe ingresar un número entero.";
         }
     }
-    int leerEnteroPositivo(string mensaje) {
+    unsigned int leerEnteroPositivo(string mensaje) {
         while (true) {
             string linea; cout << mensaje; getline(cin, linea);
             stringstream ss(linea);

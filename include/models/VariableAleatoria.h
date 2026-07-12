@@ -13,6 +13,8 @@ class VariableAleatoria {
         Distribucion* distribucion;
     public:
         VariableAleatoria(std::string,std::string,DTDistribucion*);
+        VariableAleatoria(const VariableAleatoria&);
+        VariableAleatoria& operator=(const VariableAleatoria&);
         ~VariableAleatoria();
         DTVariableAleatoria getDT() const;
         float simular() const;

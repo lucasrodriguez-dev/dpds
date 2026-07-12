@@ -7,6 +7,9 @@ Exp::Exp(float lambda) {
     }
     this->lambda = lambda;
 }
+Distribucion* Exp::clonar() const {
+    return new Exp(*this);
+};
 
 float Exp::simular() const {
     return -std::log(Uni(0,1).simular())/lambda;

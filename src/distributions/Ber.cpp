@@ -8,6 +8,10 @@ Ber::Ber(float p) {
     this->p = p;
 }
 
+Distribucion* Ber::clonar() const {
+    return new Ber(*this);
+};
+
 float Ber::simular() const {
     return algorithms::simulacion::aleatorio::uniforme::generar(0,1) < p;
 }

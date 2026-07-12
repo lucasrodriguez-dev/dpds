@@ -12,6 +12,9 @@ BinNeg::BinNeg(int r, float p) {
     this->r = r;
     this->p = p;
 }
+Distribucion* BinNeg::clonar() const {
+    return new BinNeg(*this);
+};
 
 float BinNeg::simular() const {
     int exitos = 0;

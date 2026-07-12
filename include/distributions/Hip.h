@@ -10,6 +10,7 @@ class Hip: public Distribucion {
         unsigned int distinguishedSize;
     public:
         Hip(unsigned int n,unsigned int N,unsigned int K);
+        Distribucion* clonar() const;
         float simular() const;
         float esperanza() const;
         float varianza() const;

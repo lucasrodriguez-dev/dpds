@@ -9,6 +9,9 @@ Bin::Bin(unsigned int n,float p) {
     this->n = n;
     this->p = p;
 }
+Distribucion* Bin::clonar() const {
+    return new Bin(*this);
+};
 
 float Bin::simular() const {
     int exitos = 0;

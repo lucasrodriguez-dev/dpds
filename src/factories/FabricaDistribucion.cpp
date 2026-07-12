@@ -19,6 +19,9 @@
 #include "exceptions/TipoDistribucionInvalidaException.h"
 
 Distribucion* FabricaDistribucion::crear(DTDistribucion* dt) {
+    if(dt == nullptr){
+        throw TipoDistribucionInvalidaException("La distribución no puede ser nula");
+    }
     if(auto ber = dynamic_cast<DTBer*>(dt)){
         return new Ber(ber->getP());
     }

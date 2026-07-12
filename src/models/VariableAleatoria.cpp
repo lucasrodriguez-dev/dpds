@@ -7,6 +7,17 @@ VariableAleatoria::VariableAleatoria(std::string id, std::string descripcion, DT
     this->descripcion = descripcion;
     this->distribucion = FabricaDistribucion::crear(dtdistribucion);
 }
+VariableAleatoria::VariableAleatoria(const VariableAleatoria& otra): id(otra.id),descripcion(otra.descripcion),distribucion(otra.distribucion->clonar()) {}
+
+VariableAleatoria& VariableAleatoria::operator=(const VariableAleatoria& otra) {
+    if (this != &otra) {
+        delete distribucion;
+        id = otra.id;
+        descripcion = otra.descripcion;
+        distribucion = otra.distribucion->clonar();
+    }
+    return *this;
+}
 
 VariableAleatoria::~VariableAleatoria() {
     delete distribucion;

@@ -12,6 +12,9 @@ Normal::Normal(float mu, float sigmaSquare) {
     this->sigmaSquare = sigmaSquare;
     this->sigma = std::sqrt(sigmaSquare);
 }
+Distribucion* Normal::clonar() const {
+    return new Normal(*this);
+};
 
 float Normal::simular() const {
     //algoritmo de Box-Muller

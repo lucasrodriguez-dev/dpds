@@ -42,7 +42,7 @@ DTDistribucion* leerBernoulli() {
     return new DTBer(p);
 }
 DTDistribucion* leerBinomial() {
-    int n = leerEnteroPositivo("Ingrese la cantidad de ensayos: ");
+    unsigned int n = leerEnteroPositivo("Ingrese la cantidad de ensayos: ");
     float p = leerProbabilidad("Ingrese la probabilidad de éxito en cada ensayo: ");
     return new DTBin(n,p);
 }
@@ -215,7 +215,7 @@ void Menu::crearExperimento() {
             controlador->altaExperimento(nombre, descripcion);
             cout << "Experimento registrado exitosamente";
             break;
-        } catch (DominioException e) {
+        } catch (std::runtime_error& e) {
             cout << "Ocurrió un error: " << e.what() << endl;
         }
     }
@@ -239,7 +239,7 @@ void Menu::definirEventos() {
         try {
             controlador->asociarEventos(experimento, eventos);
             break;
-        } catch (DominioException e) {
+        } catch (std::runtime_error& e) {
             cout << "Ocurrió un error: " << e.what() << endl;
         }
     }
@@ -256,7 +256,7 @@ void Menu::simularExperimento() {
             DTEvento eventoSimulado = controlador->simularExperimento(experimento);
             cout << "Evento simulado: " << eventoSimulado.getNombre() << endl;
             break;
-        } catch (DominioException e) {
+        } catch (std::runtime_error& e) {
             cout << "Ocurrió un error: " << e.what() << endl;
         }
     }
@@ -276,7 +276,7 @@ void Menu::realizarMultiplesSimulaciones() {
                 cout << simulado << endl;
             }
             break;
-        } catch (DominioException e) {
+        } catch (std::runtime_error& e) {
             cout << "Ocurrió un error: " << e.what() << endl;
         }
     }
@@ -296,7 +296,7 @@ void Menu::crearVariableAleatoria() {
             controlador->altaVariableAleatoria(experimento, variable_id, variable_descripcion, distribucion);
             cout << "Variable registrada exitosamente" << endl;
             break;
-        } catch (DominioException e) {
+        } catch (std::runtime_error& e) {
             cout << "Ocurrió un error: " << e.what() << endl;
         }
     }
@@ -315,7 +315,7 @@ void Menu::simularVariableAleatoria() {
             float valor = controlador->simularVariableAleatoria(experimento, variable);
             cout << "Valor simulado: " << valor << endl;
             break;
-        } catch (DominioException e) {
+        } catch (std::runtime_error& e) {
             cout << "Ocurrió un error: " << e.what() << endl;
         }
     }
@@ -361,7 +361,7 @@ void Menu::consultarPropiedadNumerica() {
                 }
             }
             break;
-        } catch (DominioException e) {
+        } catch (std::runtime_error& e) {
             cout << "Ocurrió un error: " << e.what() << endl;
         }
     }
@@ -382,7 +382,7 @@ void Menu::evaluarVariableAleatoria() {
             float valor = controlador->evaluarVariableAleatoria(experimento, variable, x);
             cout << "P(" << variable << " = " << x << ") ≈ " << valor << endl;
             break;
-        } catch (DominioException e) {
+        } catch (std::runtime_error& e) {
             cout << "Ocurrió un error: " << e.what() << endl;
         }
     }
@@ -402,7 +402,7 @@ void Menu::evaluarFuncionDistribucionVariableAleatoria() {
             float valor = controlador->evaluarFuncionDistribucionAcumulada(experimento, variable, x);
             cout << "P(" << variable << " ≤ " << x << ") ≈ " << valor << endl;
             break;
-        } catch (DominioException e) {
+        } catch (std::runtime_error& e) {
             cout << "Ocurrió un error: " << e.what() << endl;
         }
     }

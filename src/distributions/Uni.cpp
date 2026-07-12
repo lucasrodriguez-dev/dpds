@@ -8,6 +8,9 @@ Uni::Uni(float a, float b) {
     this->a = a;
     this->b = b;
 }
+Distribucion* Uni::clonar() const {
+    return new Uni(*this);
+};
 
 float Uni::simular() const {
     return algorithms::simulacion::aleatorio::uniforme::generar(a, b);

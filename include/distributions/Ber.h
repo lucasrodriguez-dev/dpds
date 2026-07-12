@@ -8,6 +8,7 @@ class Ber: public Distribucion {
         float p;
     public:
         Ber(float);
+        Distribucion* clonar() const;
         float simular() const;
         float esperanza() const;
         float varianza() const;
