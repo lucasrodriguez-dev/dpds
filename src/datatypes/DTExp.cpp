@@ -1,4 +1,4 @@
-#include "DTExp.h"
+#include "datatypes/DTExp.h"
 
 DTExp::DTExp(float lambda) {
     if(lambda <= 0){

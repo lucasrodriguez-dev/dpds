@@ -1,4 +1,5 @@
-#include "DTVariableAleatoria.h"
+#include "datatypes/DTVariableAleatoria.h"
+#include <iostream>
 
 DTVariableAleatoria::DTVariableAleatoria(std::string id, std::string descripcion) {
     this->id = id;
@@ -10,4 +11,9 @@ std::string DTVariableAleatoria::getId() const {
 }
 std::string DTVariableAleatoria::getDescripcion() const {
     return descripcion;
+}
+
+std::ostream& operator<<(std::ostream& os, DTVariableAleatoria dt) {
+    os << dt.getId() << std::endl << " := " << dt.getDescripcion();
+    return os;
 }

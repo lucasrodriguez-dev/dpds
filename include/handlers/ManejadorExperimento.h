@@ -1,7 +1,7 @@
 #ifndef MANEJADOREXPERIMENTO_H
 #define MANEJADOREXPERIMENTO_H
 
-#include "Experimento.h"
+#include "models/Experimento.h"
 #include "datatypes/DTExperimento.h"
 
 class ManejadorExperimento {
@@ -15,6 +15,7 @@ class ManejadorExperimento {
         void altaExperimento(std::string,std::string);
         std::vector<DTExperimento> listarExperimentos() const;
         Experimento* getExperimento(std::string) const;
+        bool existeExperimento(std::string) const;
         static void liberarMemoria();
 };
 

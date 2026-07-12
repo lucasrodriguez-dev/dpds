@@ -1,7 +1,7 @@
 #ifndef FABRICASISTEMA_H
 #define FABRICASISTEMA_H
 
-#include "ControladorExperimento.h"
+#include "controllers/ControladorExperimento.h"
 
 class FabricaSistema {
 private:

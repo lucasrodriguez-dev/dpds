@@ -1,4 +1,4 @@
-#include "DTHip.h"
+#include "datatypes/DTHip.h"
 
 DTHip::DTHip(unsigned int n, unsigned int N, unsigned int K) {
     if(n > N || K > N){

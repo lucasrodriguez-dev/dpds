@@ -1,6 +1,8 @@
 #ifndef MENU_H
 #define MENU_H
 
+#include <string>
+
 class Menu {
 private:
     void crearExperimento();
@@ -12,7 +14,7 @@ private:
     void consultarPropiedadNumerica();
     void evaluarVariableAleatoria();
     void evaluarFuncionDistribucionVariableAleatoria();
-    void cargarDatos();
+    //void cargarDatos();
     void liberarMemoria();
 public:
     void mostrarMenu();

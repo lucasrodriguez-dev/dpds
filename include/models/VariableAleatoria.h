@@ -1,7 +1,7 @@
 #ifndef VARIABLEALEATORIA_H
 #define VARIABLEALEATORIA_H
 
-#include "Distribucion.h"
+#include "distributions/Distribucion.h"
 #include "datatypes/DTDistribucion.h"
 #include "datatypes/DTVariableAleatoria.h"
 #include "datatypes/PropiedadNumerica.h"
@@ -12,7 +12,9 @@ class VariableAleatoria {
         std::string descripcion;
         Distribucion* distribucion;
     public:
-        VariableAleatoria(std::string,std::string,DTDistribucion);
+        VariableAleatoria(std::string,std::string,DTDistribucion*);
+        VariableAleatoria(const VariableAleatoria&);
+        VariableAleatoria& operator=(const VariableAleatoria&);
         ~VariableAleatoria();
         DTVariableAleatoria getDT() const;
         float simular() const;

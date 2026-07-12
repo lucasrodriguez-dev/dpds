@@ -1,7 +1,7 @@
 #ifndef ELEMENTONOENCONTRADOEXCEPTION_H
 #define ELEMENTONOENCONTRADOEXCEPTION_H
 
-#include "DominioException.h"
+#include "exceptions/DominioException.h"
 
 class ElementoNoEncontradoException: public DominioException {
     public:

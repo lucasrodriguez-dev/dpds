@@ -1,6 +1,6 @@
-#include "Pois.h"
-#include "PoissonAlgorithms.h"
-#include "AleatorioAlgorithms.h"
+#include "distributions/Pois.h"
+#include "algorithms/poisson/PoissonAlgorithms.h"
+#include "algorithms/simulacion/aleatorio/AleatorioAlgorithms.h"
 
 Pois::Pois(float lambda) {
     if(lambda <= 0){
@@ -8,6 +8,9 @@ Pois::Pois(float lambda) {
     }
     this->lambda = lambda;
 }
+Distribucion* Pois::clonar() const {
+    return new Pois(*this);
+};
 
 float Pois::simular() const {
     //algoritmo de Knuth

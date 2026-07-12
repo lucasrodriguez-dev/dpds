@@ -1,5 +1,5 @@
-#include "pois_factorialFormula.h"
-#include "factorial.h"
+#include "algorithms/poisson/pois_factorialFormula.h"
+#include "algorithms/aritmetica/factorial.h"
 #include <cmath>
 
 using algorithms::aritmetica::factorial;
@@ -13,7 +13,7 @@ namespace algorithms::poisson::factorialFormula {
 
     float cdf(float lambda, unsigned int k){
         int res = 0;
-        for(int i = 0; i <= k; i++){
+        for(size_t i = 0; i <= k; i++){
             res += pmf(lambda, i);
         }
         return res;

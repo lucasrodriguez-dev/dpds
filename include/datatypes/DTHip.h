@@ -1,7 +1,7 @@
 #ifndef DTHIP_H
 #define DTHIP_H
 
-#include "DTDistribucion.h"
+#include "datatypes/DTDistribucion.h"
 
 class DTHip: public DTDistribucion {
     private:

@@ -1,4 +1,4 @@
-#include "DTPois.h"
+#include "datatypes/DTPois.h"
 
 DTPois::DTPois(float lambda) {
     if(lambda <= 0){

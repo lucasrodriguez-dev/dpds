@@ -1,7 +1,7 @@
 #ifndef HIP_H
 #define HIP_H
 
-#include "Distribucion.h"
+#include "distributions/Distribucion.h"
 
 class Hip: public Distribucion {
     private:
@@ -10,6 +10,7 @@ class Hip: public Distribucion {
         unsigned int distinguishedSize;
     public:
         Hip(unsigned int n,unsigned int N,unsigned int K);
+        Distribucion* clonar() const;
         float simular() const;
         float esperanza() const;
         float varianza() const;

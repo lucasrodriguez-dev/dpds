@@ -1,4 +1,4 @@
-#include "DTBin.h"
+#include "datatypes/DTBin.h"
 
 DTBin::DTBin(unsigned int n,float p) {
     if(p < 0 || p > 1){

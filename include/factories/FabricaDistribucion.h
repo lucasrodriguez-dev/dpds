@@ -1,12 +1,12 @@
 #ifndef FABRICADISTRIBUCION_H
 #define FABRICADISTRIBUCION_H
 
-#include "Distribucion.h"
-#include "DTDistribucion.h"
+#include "distributions/Distribucion.h"
+#include "datatypes/DTDistribucion.h"
 
 class FabricaDistribucion {
     public:
-        static Distribucion* crear(DTDistribucion&);
+        static Distribucion* crear(DTDistribucion*);
 };
 
 #endif

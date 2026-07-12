@@ -1,6 +1,6 @@
-#include "Bin.h"
-#include "BinomialAlgorithms.h"
-#include "Ber.h"
+#include "distributions/Bin.h"
+#include "algorithms/binomial/BinomialAlgorithms.h"
+#include "distributions/Ber.h"
 
 Bin::Bin(unsigned int n,float p) {
     if(p < 0 || p > 1){
@@ -9,10 +9,13 @@ Bin::Bin(unsigned int n,float p) {
     this->n = n;
     this->p = p;
 }
+Distribucion* Bin::clonar() const {
+    return new Bin(*this);
+};
 
 float Bin::simular() const {
     int exitos = 0;
-    for(int i=0; i<=n; i++){
+    for(size_t i=0; i<=n; i++){
         exitos += Ber(p).simular();
     }
     return exitos;

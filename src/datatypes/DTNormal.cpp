@@ -1,4 +1,4 @@
-#include "DTNormal.h"
+#include "datatypes/DTNormal.h"
 
 DTNormal::DTNormal(float mu, float sigmaSquare) {
     if(sigmaSquare <= 0){

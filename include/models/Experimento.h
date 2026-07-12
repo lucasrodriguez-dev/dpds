@@ -1,8 +1,8 @@
 #ifndef EXPERIMENTO_H
 #define EXPERIMENTO_H
 
-#include "Evento.h"
-#include "VariableAleatoria.h"
+#include "models/Evento.h"
+#include "models/VariableAleatoria.h"
 #include "datatypes/DTExperimento.h"
 #include "datatypes/DTEvento.h"
 #include "datatypes/DTSimulacionExperimento.h"
@@ -19,14 +19,14 @@ class Experimento {
         std::string descripcion;
         std::map<std::string, Evento> eventos;
         std::map<std::string, VariableAleatoria> variablesAleatorias;
-        bool eventosValidos(std::vector<DTEvento>);
     public:
         Experimento(std::string,std::string);
         DTExperimento getDT();
-        bool asociarEventos(std::vector<DTEvento>);
+        void asociarEventos(std::vector<DTEvento>);
         DTEvento simular() const;
         std::vector<DTSimulacionExperimento> simular(int) const;
-        void agregarVariableAleatoria(std::string,std::string,DTDistribucion);
+        bool existeVariableAleatoria(std::string) const;
+        void agregarVariableAleatoria(std::string,std::string,DTDistribucion*);
         std::vector<DTVariableAleatoria> listarVariablesAleatorias() const;
         float simularVariableAleatoria(std::string) const;
         float consultarPropiedad(std::string,PropiedadNumerica) const;

@@ -1,7 +1,7 @@
 #ifndef DTUNI_H
 #define DTUNI_H
 
-#include "DTDistribucion.h"
+#include "datatypes/DTDistribucion.h"
 
 class DTUni: public DTDistribucion {
     private:

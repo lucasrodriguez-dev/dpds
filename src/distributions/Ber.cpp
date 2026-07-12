@@ -1,5 +1,5 @@
-#include "Ber.h"
-#include "AleatorioAlgorithms.h"
+#include "distributions/Ber.h"
+#include "algorithms/simulacion/aleatorio/AleatorioAlgorithms.h"
 
 Ber::Ber(float p) {
     if(p < 0 || p > 1){
@@ -7,6 +7,10 @@ Ber::Ber(float p) {
     }
     this->p = p;
 }
+
+Distribucion* Ber::clonar() const {
+    return new Ber(*this);
+};
 
 float Ber::simular() const {
     return algorithms::simulacion::aleatorio::uniforme::generar(0,1) < p;
@@ -19,10 +23,10 @@ float Ber::varianza() const {
     return p*(1-p);
 }
 float Ber::evaluar(float x) const {
-    if(x = 1){
+    if(x == 1){
         return p;
     }
-    if(x = 0){
+    if(x == 0){
         return 1-p;
     }
     return 0;

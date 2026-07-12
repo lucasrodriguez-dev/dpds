@@ -1,6 +1,8 @@
-#include "ManejadorExperimento.h"
+#include "handlers/ManejadorExperimento.h"
 
 ManejadorExperimento* ManejadorExperimento::instancia = nullptr;
+
+ManejadorExperimento::ManejadorExperimento() {}
 
 ManejadorExperimento::~ManejadorExperimento() {
     for(auto& [nombre, experimento]: experimentos){
@@ -33,6 +35,10 @@ Experimento* ManejadorExperimento::getExperimento(std::string nombre) const {
         return exp->second;
     }
     return nullptr;
+}
+
+bool ManejadorExperimento::existeExperimento(std::string nombre) const {
+    return getExperimento(nombre) != nullptr;
 }
 
 void ManejadorExperimento::liberarMemoria() {

@@ -1,6 +1,6 @@
-#include "BinNeg.h"
-#include "BinomialNegativaAlgorithms.h"
-#include "Ber.h"
+#include "distributions/BinNeg.h"
+#include "algorithms/binomialNegativa/BinomialNegativaAlgorithms.h"
+#include "distributions/Ber.h"
 
 BinNeg::BinNeg(int r, float p) {
     if(r < 1){
@@ -12,6 +12,9 @@ BinNeg::BinNeg(int r, float p) {
     this->r = r;
     this->p = p;
 }
+Distribucion* BinNeg::clonar() const {
+    return new BinNeg(*this);
+};
 
 float BinNeg::simular() const {
     int exitos = 0;

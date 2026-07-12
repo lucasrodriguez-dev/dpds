@@ -1,7 +1,7 @@
 #ifndef UNI_H
 #define UNI_H
 
-#include "Distribucion.h"
+#include "distributions/Distribucion.h"
 
 class Uni: public Distribucion {
     private:
@@ -9,6 +9,7 @@ class Uni: public Distribucion {
         float b;
     public:
         Uni(float,float);
+        Distribucion* clonar() const;
         float simular() const;
         float esperanza() const;
         float varianza() const;

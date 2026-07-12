@@ -1,7 +1,7 @@
 #ifndef ELEMENTODUPLICADOEXCEPTION_H
 #define ELEMENTODUPLICADOEXCEPTION_H
 
-#include "DominioException.h"
+#include "exceptions/DominioException.h"
 
 class ElementoDuplicadoException: public DominioException {
     public:

@@ -1,5 +1,5 @@
-#include "Exp.h"
-#include "Uni.h"
+#include "distributions/Exp.h"
+#include "distributions/Uni.h"
 
 Exp::Exp(float lambda) {
     if(lambda <= 0){
@@ -7,6 +7,9 @@ Exp::Exp(float lambda) {
     }
     this->lambda = lambda;
 }
+Distribucion* Exp::clonar() const {
+    return new Exp(*this);
+};
 
 float Exp::simular() const {
     return -std::log(Uni(0,1).simular())/lambda;

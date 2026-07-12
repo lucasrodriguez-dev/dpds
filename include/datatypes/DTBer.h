@@ -1,7 +1,7 @@
 #ifndef DTBER_H
 #define DTBER_H
 
-#include "DTDistribucion.h"
+#include "datatypes/DTDistribucion.h"
 
 class DTBer: public DTDistribucion {
     private:

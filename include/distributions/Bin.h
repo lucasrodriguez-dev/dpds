@@ -1,7 +1,7 @@
 #ifndef BIN_H
 #define BIN_H
 
-#include "Distribucion.h"
+#include "distributions/Distribucion.h"
 
 class Bin: public Distribucion {
     private:
@@ -9,6 +9,7 @@ class Bin: public Distribucion {
         float p;
     public:
         Bin(unsigned int,float);
+        Distribucion* clonar() const;
         float simular() const;
         float esperanza() const;
         float varianza() const;

@@ -1,6 +1,6 @@
-#include "Normal.h"
-#include "NormalAlgorithms.h"
-#include "Uni.h"
+#include "distributions/Normal.h"
+#include "algorithms/normal/NormalAlgorithms.h"
+#include "distributions/Uni.h"
 
 constexpr float PI = 3.14159265358979323846f;
 
@@ -12,6 +12,9 @@ Normal::Normal(float mu, float sigmaSquare) {
     this->sigmaSquare = sigmaSquare;
     this->sigma = std::sqrt(sigmaSquare);
 }
+Distribucion* Normal::clonar() const {
+    return new Normal(*this);
+};
 
 float Normal::simular() const {
     //algoritmo de Box-Muller

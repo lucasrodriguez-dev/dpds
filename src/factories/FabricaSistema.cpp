@@ -1,6 +1,8 @@
-#include "FabricaSistema.h"
+#include "factories/FabricaSistema.h"
 
 FabricaSistema* FabricaSistema::instancia = nullptr;
+
+FabricaSistema::FabricaSistema() {}
 
 FabricaSistema* FabricaSistema::getInstancia() {
     if (instancia == nullptr) {

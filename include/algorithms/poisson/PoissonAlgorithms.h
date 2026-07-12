@@ -1,6 +1,6 @@
 #ifndef POISSONALGORITHMS_H
 #define POISSONALGORITHMS_H
 
-#include "pois_factorialFormula.h"
+#include "algorithms/poisson/pois_factorialFormula.h"
 
 #endif

@@ -1,5 +1,5 @@
-#include "binneg_combinaciones.h"
-#include "combinacion_factoriales.h"
+#include "algorithms/binomialNegativa/binneg_combinaciones.h"
+#include "algorithms/combinatoria/combinacion_factoriales.h"
 #include <cmath>
 
 using algorithms::combinatoria::factoriales::combinacion;
@@ -12,7 +12,7 @@ namespace algorithms::binomialnegativa::combinaciones {
 
     float cdf(unsigned int r, float p, unsigned int k){
         int res = 0;
-        for(int i = 0; i <= k; i++){
+        for(size_t i = 0; i <= k; i++){
             res += pmf(r, p, i);
         }
         return res;

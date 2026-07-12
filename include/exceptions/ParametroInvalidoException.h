@@ -1,7 +1,7 @@
 #ifndef PARAMETROINVALIDOEXCEPTION_H
 #define PARAMETROINVALIDOEXCEPTION_H
 
-#include "DominioException.h"
+#include "exceptions/DominioException.h"
 
 class ParametroInvalidoException: public DominioException {
     public:

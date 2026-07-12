@@ -1,5 +1,5 @@
-#include "hip_combinaciones.h"
-#include "combinacion_factoriales.h"
+#include "algorithms/hipergeometrica/hip_combinaciones.h"
+#include "algorithms/combinatoria/combinacion_factoriales.h"
 #include <cmath>
 
 using algorithms::combinatoria::factoriales::combinacion;
@@ -11,7 +11,7 @@ namespace algorithms::hipergeometrica::combinaciones {
 
     float cdf(unsigned int n, unsigned int N, unsigned int K, float k){
         int res = 0;
-        for(int i = 0; i <= k; i++){
+        for(size_t i = 0; i <= k; i++){
             res += pmf(n, N, K, i);
         }
         return res;

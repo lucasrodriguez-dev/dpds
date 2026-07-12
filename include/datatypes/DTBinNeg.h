@@ -1,7 +1,7 @@
 #ifndef DTBINNEG_H
 #define DTBINNEG_H
 
-#include "DTDistribucion.h"
+#include "datatypes/DTDistribucion.h"
 
 class DTBinNeg: public DTDistribucion {
     private:

@@ -1,4 +1,4 @@
-#include "aleatorio_uniforme.h"
+#include "algorithms/simulacion/aleatorio/aleatorio_uniforme.h"
 #include <random>
 
 namespace algorithms::simulacion::aleatorio::uniforme {
