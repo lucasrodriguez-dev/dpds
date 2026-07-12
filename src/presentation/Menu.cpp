@@ -3,6 +3,8 @@
 #include "testing/CargaDatos.h"
 #include <iostream>
 #include <limits>
+#include <algorithm>
+#include <sstream>
 #include "datatypes/DTBer.h"
 #include "datatypes/DTBin.h"
 #include "datatypes/DTHip.h"
@@ -12,7 +14,7 @@
 #include "datatypes/DTExp.h"
 #include "datatypes/DTNormal.h"
 
-using std::string, std::cout, std::cin, std::getline, std::endl, std::vector;
+using std::string, std::cout, std::cin, std::getline, std::endl, std::vector, std::stringstream;
 
 void descartarSaltoDeLinea() {
     cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -35,7 +37,6 @@ void Menu::mostrarMenu() {
         cout << "0. Salir" << endl;
         cout << "Ingrese una opcion: ";
         cin >> opcion; descartarSaltoDeLinea();
-
         switch (opcion) {
             case 1: {
                 crearExperimento();
@@ -90,15 +91,6 @@ void Menu::mostrarMenu() {
     }
 }
 
-struct seleccionExperimento {
-    string nombre;
-    bool existe;
-};
-struct seleccionVariable {
-    string id;
-    bool existe;
-};
-
 void listarExperimentos(vector<DTExperimento> experimentos){
     cout << endl << "EXPERIMENTOS" << endl << ".............." << endl;
     for(auto experimento: experimentos){
@@ -113,371 +105,381 @@ void listarVariablesAleatorias(vector<DTVariableAleatoria> variables){
     }
 }
 
-seleccionExperimento seleccionarExperimento(vector<DTExperimento> experimentos){
-    string nombre;
-    cout << "Ingrese nombre del experimento: "; getline(cin, nombre);
-    bool existe = false;
-    for(auto experimento: experimentos){
-        if(experimento.getNombre() == nombre){
-            existe = true;
-            break;
-        }
-    }
-    seleccionExperimento retorno;
-    retorno.existe = existe;
-    retorno.nombre = nombre;
-    return retorno;
-}
-
-seleccionVariable seleccionarVariable(vector<DTVariableAleatoria> variables){
-    string id;
-    cout << "Ingrese el id de la variable aleatoria a simular: "; getline(cin, id);
-    bool existe = false;
-    for(auto variable: variables){
-        if(variable.getId() == id){
-            existe = true;
-            break;
-        }
-    }
-    seleccionVariable retorno;
-    retorno.existe = existe;
-    retorno.id = id;
-    return retorno;
-}
-
 void Menu::liberarMemoria() {
     FabricaSistema::liberarMemoria();
     CargaDatos::liberarMemoria();
 }
 
+bool esVacio(string cadena){
+    return std::all_of(cadena.begin(), cadena.end(),
+        [](unsigned char c) {
+            return std::isspace(c);
+        });
+}
+
+string leerNoVacio(string mensaje) {
+    string retorno;
+    do {
+        cout << mensaje; getline(cin, retorno);
+    } while(esVacio(retorno));
+    return retorno;
+}
+int leerEntero(string mensaje) {
+    while (true) {
+        string linea; cout << mensaje; getline(cin, linea);
+        stringstream ss(linea);
+        int numero;
+        if (ss >> numero && ss.eof())
+            return numero;
+        cout << "Debe ingresar un número entero.";
+    }
+}
+int leerEnteroPositivo(string mensaje) {
+    while (true) {
+        string linea; cout << mensaje; getline(cin, linea);
+        stringstream ss(linea);
+        int numero;
+        if (ss >> numero && ss.eof() && numero > 0)
+            return numero;
+        cout << "Debe ingresar un número entero positivo.";
+    }
+}
+float leerDecimal(string mensaje) {
+    while (true) {
+        string linea; cout << mensaje; getline(cin, linea); std::replace(linea.begin(), linea.end(), ',', '.');
+        stringstream ss(linea);
+        float numero;
+        if (ss >> numero && ss.eof())
+            return numero;
+        cout << "Debe ingresar un número decimal.";
+    }
+}
+float leerDecimalPositivo(string mensaje) {
+    while (true) {
+        string linea; cout << mensaje; getline(cin, linea); std::replace(linea.begin(), linea.end(), ',', '.');
+        stringstream ss(linea);
+        float numero;
+        if (ss >> numero && ss.eof() && numero > 0)
+            return numero;
+        cout << "Debe ingresar un número decimal positivo.";
+    }
+}
+float leerProbabilidad(string mensaje) {
+    while(true) {
+        float p = leerDecimal(mensaje);
+        if(0 <= p && p <= 1)
+            return p;
+        cout << "La probabilidad debe estar entre 0 y 1.";
+    }
+}
+bool leerBooleano(string mensaje) {
+    while (true) {
+        string linea; cout << mensaje; getline(cin, linea);
+        stringstream ss(linea);
+        int numero;
+        if (ss >> numero && ss.eof())
+            return numero == 1;
+        cout << "Debe ingresar 1 o 0.";
+    }
+}
+
 void Menu::crearExperimento() {
-    string nombre, descripcion;
-    cout << "Ingrese nombre del experimento: "; getline(cin, nombre);
-    cout << "Ingrese descripción del experimento: "; getline(cin, descripcion);
     IExperimento* controlador = FabricaSistema::getInstancia()->getIExperimento();
-    //validar que no exista experimento con ese nombre
-    controlador->altaExperimento(nombre, descripcion);
-    cout << "Experimento registrado exitosamente";
+    while(true){
+        string nombre = leerNoVacio("Ingrese el nombre del experimento: ");
+        string descripcion = leerNoVacio("Ingrese su descripción: ");
+        try {
+            controlador->altaExperimento(nombre, descripcion);
+            cout << "Experimento registrado exitosamente";
+            break;
+        } catch (DominioException e) {
+            cout << "Ocurrió un error: " << e.what() << endl;
+        }
+    }
     delete controlador;
 }
 
 void Menu::definirEventos() {
     IExperimento* controlador = FabricaSistema::getInstancia()->getIExperimento();
-    auto experimentos = controlador->listarExperimentos();
-    listarExperimentos(experimentos);
-    seleccionExperimento seleccion = seleccionarExperimento(experimentos);
-    bool experimentoValido = seleccion.existe;
-    string nombre = seleccion.nombre; 
-    if(experimentoValido){
+    while(true){
+        auto experimentos = controlador->listarExperimentos();
+        listarExperimentos(experimentos);
+        string experimento = leerNoVacio("Ingrese el experimento al que corresponden los eventos: ");
         vector<DTEvento> eventos;
-        int agregarEvento = 1;
-        float suma = 0;
-        while(agregarEvento==1 && suma < 1){
-            string nom; float prob;
-            cout << endl << "=== Registrar evento ===" << endl;
-            cout << "Ingrese evento: "; getline(cin, nom);
-            cout << "Ingrese probabilidad: "; cin >> prob;
-            suma += prob;
-            //validar que no se repita y que esté entre 0 y 1
-            eventos.push_back(DTEvento(nom, prob));
-            cout << "Ingrese 1 si desea agregar otro evento, 0 si no: "; cin >> agregarEvento; descartarSaltoDeLinea();
+        bool agregarEvento = true;
+        while(agregarEvento){
+            string nombre = leerNoVacio("Ingrese el evento: ");
+            float probabilidad = leerProbabilidad("Ingrese su probabilidad: ");
+            eventos.push_back(DTEvento(nombre, probabilidad));
+            agregarEvento = leerBooleano("¿Desea agregar otro evento? (1 sí, 0 no): ");
         }
-        controlador->asociarEventos(nombre, eventos);
-    } else {
-        cout << "El nombre del experimento no es válido";        
+        try {
+            controlador->asociarEventos(experimento, eventos);
+            break;
+        } catch (DominioException e) {
+            cout << "Ocurrió un error: " << e.what() << endl;
+        }
     }
     delete controlador;
 }
 
 void Menu::simularExperimento() {
     IExperimento* controlador = FabricaSistema::getInstancia()->getIExperimento();
-    auto experimentos = controlador->listarExperimentos();
-    listarExperimentos(experimentos);
-    seleccionExperimento seleccion = seleccionarExperimento(experimentos);
-    bool experimentoValido = seleccion.existe;
-    string nombre = seleccion.nombre; 
-    if(experimentoValido){
-        DTEvento eventoSimulado = controlador->simularExperimento(nombre);
-        cout << "Evento simulado: " << eventoSimulado.getNombre() << endl;
-    } else {
-        cout << "El nombre del experimento no es válido" << endl;        
+    while(true) {
+        auto experimentos = controlador->listarExperimentos();
+        listarExperimentos(experimentos);
+        string experimento = leerNoVacio("Ingrese el experimento que desea simular: ");
+        try {
+            DTEvento eventoSimulado = controlador->simularExperimento(experimento);
+            cout << "Evento simulado: " << eventoSimulado.getNombre() << endl;
+            break;
+        } catch (DominioException e) {
+            cout << "Ocurrió un error: " << e.what() << endl;
+        }
     }
-    delete controlador;  
+    delete controlador;
 }
 
 void Menu::realizarMultiplesSimulaciones() {
     IExperimento* controlador = FabricaSistema::getInstancia()->getIExperimento();
-    auto experimentos = controlador->listarExperimentos();
-    listarExperimentos(experimentos);
-    seleccionExperimento seleccion = seleccionarExperimento(experimentos);
-    bool experimentoValido = seleccion.existe;
-    string nombre = seleccion.nombre;
-    if(experimentoValido){
-        int cantidad;
-        cout << "Ingrese cantidad de simulaciones: "; cin >> cantidad;
-        if(cantidad <= 0){
-            cout << "La cantidad de simulaciones debe ser mayor que 0";
-        } else {
-            vector<DTSimulacionExperimento> simulados = controlador->simularExperimento(nombre, cantidad);
+    while(true) {
+        auto experimentos = controlador->listarExperimentos();
+        listarExperimentos(experimentos);
+        string experimento = leerNoVacio("Ingrese el experimento con el que desea realizar simulaciones: ");
+        int cantidad = leerEnteroPositivo("Ingrese la cantidad de simulaciones: ");
+        try {
+            vector<DTSimulacionExperimento> simulados = controlador->simularExperimento(experimento, cantidad);
             for(auto simulado: simulados){
                 cout << simulado << endl;
             }
+            break;
+        } catch (DominioException e) {
+            cout << "Ocurrió un error: " << e.what() << endl;
         }
-    } else {
-        cout << "El nombre del experimento no es válido" << endl;        
     }
     delete controlador;  
 }
 
 DTDistribucion* leerBernoulli() {
-    float p;
-    cout << "Ingrese la probabilidad de éxito: "; cin >> p;
-    //validar p
+    float p = leerProbabilidad("Ingrese la probabilidad de éxito: ");
     return new DTBer(p);
 }
 DTDistribucion* leerBinomial() {
-    int n;
-    float p;
-    cout << "Ingrese la cantidad ensayos: "; cin >> n;
-    cout << "Ingrese la probabilidad de éxito en cada ensayo: "; cin >> p;
-    //validar n y p
+    int n = leerEnteroPositivo("Ingrese la cantidad de ensayos: ");
+    float p = leerProbabilidad("Ingrese la probabilidad de éxito en cada ensayo: ");
     return new DTBin(n,p);
 }
 DTDistribucion* leerHipergeometrica() {
-    int N;
-    int K;
-    int n;
-    cout << "Ingrese el tamaño total de la población: "; cin >> N;
-    cout << "Ingrese la cantidad de distinguidos: "; cin >> K;
-    cout << "Ingrese el tamaño de la muestra: "; cin >> n;
-    //validar n,N,K
+    int N = leerEnteroPositivo("Ingrese el tamaño total de la población: ");
+    int K = leerEnteroPositivo("Ingrese la cantidad de distinguidos: ");
+    int n = leerEnteroPositivo("Ingrese el tamaño de la muestra: ");
     return new DTHip(n,N,K);
 }
 DTDistribucion* leerBinomialNegativa() {
-    int r;
-    float p;
-    cout << "Ingrese la cantidad de éxitos: "; cin >> r;
-    cout << "Ingrese la probabilidad de éxito: "; cin >> p;
-    //validar r y p
+    int r = leerEnteroPositivo("Ingrese la cantidad de éxitos: ");
+    float p = leerProbabilidad("Ingrese la probabilidad de éxito: ");
     return new DTBinNeg(r,p);
 }
 DTDistribucion* leerPoisson() {
-    float lambda;
-    cout << "Ingrese el valor de λ: "; cin >> lambda;
-    //validar lambda
+    float lambda = leerDecimalPositivo("Ingrese el valor de λ: ");
     return new DTPois(lambda);
 }
 DTDistribucion* leerUniforme() {
     float a,b;
-    cout << "Ingrese el valor del extremo inferior del intervalo: "; cin >> a;
-    cout << "Ingrese el valor del extremo superior del intervalo: "; cin >> b;
-    //validar a,b
+    a = b = 0;
+    while(a == b){
+        cout << "(Los extremos del intervalo deben ser distintos)" << endl;
+        float a = leerDecimal("Ingrese un extremo del intervalo: ");
+        float b = leerDecimal("Ingrese el otro extremo: ");
+    }
+    if (b < a)
+        return new DTUni(b,a);
     return new DTUni(a,b);
 }
 DTDistribucion* leerExponencial() {
-    float lambda;
-    cout << "Ingrese el valor de λ: "; cin >> lambda;
-    //validar lambda
+    float lambda = leerDecimalPositivo("Ingrese el valor de λ: ");
     return new DTExp(lambda);
 }
 DTDistribucion* leerNormal() {
-    float mu, sigmaSquare;
-    cout << "Ingrese el valor de μ: "; cin >> mu;
-    cout << "Ingrese el valor de σ²: "; cin >> sigmaSquare;
-    //validar mu y sigma
+    float mu = leerDecimal("Ingrese el valor de μ: ");
+    float sigmaSquare = leerDecimalPositivo("Ingrese el valor de σ²: ");
     return new DTNormal(mu, sigmaSquare);
+}
+
+DTDistribucion* leerDistribucion(string mensaje) {
+    while(true) {
+        cout << mensaje << endl 
+            << "1. Bernoulli" << endl
+            << "2. Binomial" << endl 
+            << "3. Hipergeométrica" << endl 
+            << "4. Binomial negativa" << endl 
+            << "5. Poisson" << endl 
+            << "6. Uniforme" << endl 
+            << "7. Exponencial" << endl 
+            << "8. Normal" << endl;
+        int opcion = leerEntero("Opción: ");
+        switch(opcion){
+            case 1: {
+                DTDistribucion* distribucion = leerBernoulli();
+                return distribucion;
+            }
+            case 2: {
+                DTDistribucion* distribucion = leerBinomial();
+                return distribucion;
+            }
+            case 3: {
+                DTDistribucion* distribucion = leerHipergeometrica();
+                return distribucion;
+            }
+            case 4: {
+                DTDistribucion* distribucion = leerBinomialNegativa();
+                return distribucion;
+            }
+            case 5: {
+                DTDistribucion* distribucion = leerPoisson();
+                return distribucion;
+            }
+            case 6: {
+                DTDistribucion* distribucion = leerUniforme();
+                return distribucion;
+            }
+            case 7: {
+                DTDistribucion* distribucion = leerExponencial();
+                return distribucion;
+            }
+            case 8: {
+                DTDistribucion* distribucion = leerNormal();
+                return distribucion;
+            }
+            default: {
+                cout << "Opción no válida.";
+                break;
+            }
+        }
+    }
 }
 
 void Menu::crearVariableAleatoria() {
     IExperimento* controlador = FabricaSistema::getInstancia()->getIExperimento();
-    auto experimentos = controlador->listarExperimentos();
-    listarExperimentos(experimentos);
-    seleccionExperimento seleccion = seleccionarExperimento(experimentos);
-    bool experimentoValido = seleccion.existe;
-    if(experimentoValido) {
-        string nombre = seleccion.nombre;
-        string id;
-        cout << "Ingrese id de la variable aleatoria: "; getline(cin, id);
-        //validar que no exista la id
-        string descripcion;
-        int opcion;
-        cout << "Ingrese descripción de la variable aleatoria: "; getline(cin, descripcion);
-        cout << "Ingrese su distribución: " << endl 
-        << "1. Bernoulli" << endl
-        << "2. Binomial" << endl 
-        << "3. Hipergeométrica" << endl 
-        << "4. Binomial negativa" << endl 
-        << "5. Poisson" << endl 
-        << "6. Uniforme" << endl 
-        << "7. Exponencial" << endl 
-        << "8. Normal" << endl
-        << "Opción: "; cin >> opcion;
-        switch(opcion){
-            case 1: {
-                DTDistribucion* distribucion = leerBernoulli();
-                controlador->altaVariableAleatoria(nombre, id, descripcion, distribucion);
-                break;
-            }
-            case 2: {
-                DTDistribucion* distribucion = leerBinomial();
-                controlador->altaVariableAleatoria(nombre, id, descripcion, distribucion);
-                break;
-            }
-            case 3: {
-                DTDistribucion* distribucion = leerHipergeometrica();
-                controlador->altaVariableAleatoria(nombre, id, descripcion, distribucion);
-                break;
-            }
-            case 4: {
-                DTDistribucion* distribucion = leerBinomialNegativa();
-                controlador->altaVariableAleatoria(nombre, id, descripcion, distribucion);
-                break;
-            }
-            case 5: {
-                DTDistribucion* distribucion = leerPoisson();
-                controlador->altaVariableAleatoria(nombre, id, descripcion, distribucion);
-                break;
-            }
-            case 6: {
-                DTDistribucion* distribucion = leerUniforme();
-                controlador->altaVariableAleatoria(nombre, id, descripcion, distribucion);
-                break;
-            }
-            case 7: {
-                DTDistribucion* distribucion = leerExponencial();
-                controlador->altaVariableAleatoria(nombre, id, descripcion, distribucion);
-                break;
-            }
-            case 8: {
-                DTDistribucion* distribucion = leerNormal();
-                controlador->altaVariableAleatoria(nombre, id, descripcion, distribucion);
-                break;
-            }
-            default: {
-                cout << "Opción no válida";
-                break;
-            }
+    while(true){
+        auto experimentos = controlador->listarExperimentos();
+        listarExperimentos(experimentos);
+        string experimento = leerNoVacio("Ingrese el experimento al que pertenecerá la variable aleatoria: ");
+        string variable_id = leerNoVacio("Ingrese el identificador que tendrá dicha variable: ");
+        string variable_descripcion = leerNoVacio("Ingrese qué representa " + variable_id + ": ");
+        DTDistribucion* distribucion = leerDistribucion("Ingrese la distribución de " + variable_id + ": ");
+        try {
+            controlador->altaVariableAleatoria(experimento, variable_id, variable_descripcion, distribucion);
+            cout << "Variable registrada exitosamente" << endl;
+            break;
+        } catch (DominioException e) {
+            cout << "Ocurrió un error: " << e.what() << endl;
         }
-    } else {
-        cout << "Experimento no encontrado";
     }
 }
 
 void Menu::simularVariableAleatoria() {
     IExperimento* controlador = FabricaSistema::getInstancia()->getIExperimento();
-    auto experimentos = controlador->listarExperimentos();
-    listarExperimentos(experimentos);
-    seleccionExperimento seleccion = seleccionarExperimento(experimentos);
-    bool experimentoValido = seleccion.existe;
-    if(experimentoValido) {
-        string nombre = seleccion.nombre;
-        auto variablesAleatorias = controlador->listarVariablesAleatorias(nombre);
+    while(true){
+        auto experimentos = controlador->listarExperimentos();
+        listarExperimentos(experimentos);
+        string experimento = leerNoVacio("Ingrese el experimento al que pertenece la variable a simular: ");
+        auto variablesAleatorias = controlador->listarVariablesAleatorias(experimento);
         listarVariablesAleatorias(variablesAleatorias);
-        seleccionVariable seleccionV = seleccionarVariable(variablesAleatorias);
-        bool variableValida = seleccionV.existe;
-        string id = seleccionV.id;
-        if(variableValida){
-            cout << "Valor simulado: " << controlador->simularVariableAleatoria(id) << endl;
-        } else {
-            cout << "Variable no encontrada" << endl;
+        string variable = leerNoVacio("Ingrese el identificador de dicha variable: ");
+        try {
+            float valor = controlador->simularVariableAleatoria(experimento, variable);
+            cout << "Valor simulado: " << valor << endl;
+            break;
+        } catch (DominioException e) {
+            cout << "Ocurrió un error: " << e.what() << endl;
         }
-    } else {
-        cout << "Experimento no encontrado";
     }
 }
 
 void Menu::consultarPropiedadNumerica() {
     IExperimento* controlador = FabricaSistema::getInstancia()->getIExperimento();
-    auto experimentos = controlador->listarExperimentos();
-    listarExperimentos(experimentos);
-    seleccionExperimento seleccion = seleccionarExperimento(experimentos);
-    bool experimentoValido = seleccion.existe;
-    if(experimentoValido) {
-        string nombre = seleccion.nombre;
-        auto variablesAleatorias = controlador->listarVariablesAleatorias(nombre);
+    while(true){
+        auto experimentos = controlador->listarExperimentos();
+        listarExperimentos(experimentos);
+        string experimento = leerNoVacio("Ingrese el experimento al que pertenece la variable a consultar: ");
+        auto variablesAleatorias = controlador->listarVariablesAleatorias(experimento);
         listarVariablesAleatorias(variablesAleatorias);
-        seleccionVariable seleccionV = seleccionarVariable(variablesAleatorias);
-        bool variableValida = seleccionV.existe;
-        string id = seleccionV.id;
-        if(variableValida){
-            int opcion;
-            cout << "¿Qué propiedad desea consultar?: " << endl
-            << "1. Esperanza" << endl
-            << "2. Varianza" << endl 
-            << "3. Desvío" << endl 
-            << "Opción: "; cin >> opcion;
-            switch(opcion){
-                case 1: {
-                    cout << "E(" << id << ") = " << controlador->consultarPropiedad(id, PropiedadNumerica::esperanza);
-                    break;
-                }
-                case 2: {
-                    cout << "V(" << id << ") = " << controlador->consultarPropiedad(id, PropiedadNumerica::varianza);
-                    break;
-                }
-                case 3: {
-                    cout << "σ(" << id << ") = " << controlador->consultarPropiedad(id, PropiedadNumerica::desvio);
-                    break;
-                }
-                default: {
-                    cout << "Opción no válida";
-                    break;
+        string variable = leerNoVacio("Ingrese el identificador de dicha variable: ");
+        int opcion = -1;
+        try {
+            while(opcion != 1 && opcion != 2 && opcion != 3){
+                cout << "¿Qué propiedad desea consultar?: " << endl
+                    << "1. Esperanza" << endl
+                    << "2. Varianza" << endl 
+                    << "3. Desvío" << endl;
+                    opcion = leerEntero("Opción: ");
+                switch(opcion){
+                    case 1: {
+                        float valor = controlador->consultarPropiedad(experimento, variable, PropiedadNumerica::esperanza);
+                        cout << "E(" << variable << ") ≈ " << valor << endl;
+                        break;
+                    }
+                    case 2: {
+                        float valor = controlador->consultarPropiedad(experimento, variable, PropiedadNumerica::varianza);
+                        cout << "V(" << variable << ") ≈ " << valor << endl;
+                        break;
+                    }
+                    case 3: {
+                        float valor = controlador->consultarPropiedad(experimento, variable, PropiedadNumerica::desvio);
+                        cout << "σ(" << variable << ") ≈ " << valor << endl;
+                        break;
+                    }
+                    default: {
+                        cout << "Opción no válida";
+                        break;
+                    } 
                 }
             }
-        } else {
-            cout << "Variable no encontrada" << endl;
+            break;
+        } catch (DominioException e) {
+            cout << "Ocurrió un error: " << e.what() << endl;
         }
-    } else {
-        cout << "Experimento no encontrado";
     }
+    delete controlador;
 }
 
 void Menu::evaluarVariableAleatoria() {
     IExperimento* controlador = FabricaSistema::getInstancia()->getIExperimento();
-    auto experimentos = controlador->listarExperimentos();
-    listarExperimentos(experimentos);
-    seleccionExperimento seleccion = seleccionarExperimento(experimentos);
-    bool experimentoValido = seleccion.existe;
-    if(experimentoValido) {
-        string nombre = seleccion.nombre;
-        auto variablesAleatorias = controlador->listarVariablesAleatorias(nombre);
+    while(true){
+        auto experimentos = controlador->listarExperimentos();
+        listarExperimentos(experimentos);
+        string experimento = leerNoVacio("Ingrese el experimento al que pertenece la variable a evaluar: ");
+        auto variablesAleatorias = controlador->listarVariablesAleatorias(experimento);
         listarVariablesAleatorias(variablesAleatorias);
-        seleccionVariable seleccionV = seleccionarVariable(variablesAleatorias);
-        bool variableValida = seleccionV.existe;
-        string id = seleccionV.id;
-        if(variableValida){
-            float x;
-            cout << "Ingrese en qué valor desea evaluar a " << id << ": " << endl; cin >> x;
-            cout << "P(" << id << " = " << x << ") ≈ " << controlador->evaluarVariableAleatoria(id, x);
-        } else {
-            cout << "Variable no encontrada" << endl;
+        string variable = leerNoVacio("Ingrese el identificador de dicha variable: ");
+        float x = leerDecimal("Ingrese en qué valor quiere evaluar a " + variable + ": ");
+        try {
+            float valor = controlador->evaluarVariableAleatoria(experimento, variable, x);
+            cout << "P(" << variable << " = " << x << ") ≈ " << valor << endl;
+            break;
+        } catch (DominioException e) {
+            cout << "Ocurrió un error: " << e.what() << endl;
         }
-    } else {
-        cout << "Experimento no encontrado";
     }
 }
 
 void Menu::evaluarFuncionDistribucionVariableAleatoria() {
     IExperimento* controlador = FabricaSistema::getInstancia()->getIExperimento();
-    auto experimentos = controlador->listarExperimentos();
-    listarExperimentos(experimentos);
-    seleccionExperimento seleccion = seleccionarExperimento(experimentos);
-    bool experimentoValido = seleccion.existe;
-    if(experimentoValido) {
-        string nombre = seleccion.nombre;
-        auto variablesAleatorias = controlador->listarVariablesAleatorias(nombre);
+    while(true){
+        auto experimentos = controlador->listarExperimentos();
+        listarExperimentos(experimentos);
+        string experimento = leerNoVacio("Ingrese el experimento al que pertenece la variable a evaluar: ");
+        auto variablesAleatorias = controlador->listarVariablesAleatorias(experimento);
         listarVariablesAleatorias(variablesAleatorias);
-        seleccionVariable seleccionV = seleccionarVariable(variablesAleatorias);
-        bool variableValida = seleccionV.existe;
-        string id = seleccionV.id;
-        if(variableValida){
-            float x;
-            cout << "Ingrese en qué valor desea evaluar la distribución acumulada de " << id << ": " << endl; cin >> x;
-            cout << "P(" << id << " ≤ " << x << ") ≈ " << controlador->evaluarFuncionDistribucionAcumulada(id, x);
-        } else {
-            cout << "Variable no encontrada" << endl;
+        string variable = leerNoVacio("Ingrese el identificador de dicha variable: ");
+        float x = leerDecimal("Ingrese en qué valor quiere evaluar la distribución acumulada de " + variable + ": ");
+        try {
+            float valor = controlador->evaluarFuncionDistribucionAcumulada(experimento, variable, x);
+            cout << "P(" << variable << " ≤ " << x << ") ≈ " << valor << endl;
+            break;
+        } catch (DominioException e) {
+            cout << "Ocurrió un error: " << e.what() << endl;
         }
-    } else {
-        cout << "Experimento no encontrado";
     }
 }

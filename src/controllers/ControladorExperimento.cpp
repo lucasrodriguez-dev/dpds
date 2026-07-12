@@ -4,11 +4,7 @@
 #include "exceptions/ProbabilidadesInvalidasException.h"
 #include "exceptions/ElementoNoEncontradoException.h"
 
-const std::string ControladorExperimento::EXPERIMENTO_NULO = "";
-
-ControladorExperimento::ControladorExperimento() {
-    this->experimentoSeleccionado = ControladorExperimento::EXPERIMENTO_NULO;
-}
+ControladorExperimento::ControladorExperimento() {}
 
 void ControladorExperimento::altaExperimento(std::string nombre, std::string descripcion) {
     ManejadorExperimento* me = ManejadorExperimento::getInstancia();
@@ -71,48 +67,54 @@ std::vector<DTVariableAleatoria> ControladorExperimento::listarVariablesAleatori
     if(!me->existeExperimento(experimento)){
         throw ElementoNoEncontradoException("No existe un experimento llamado '" + experimento + "'");
     }
-    experimentoSeleccionado = experimento;
-    Experimento* exp = me->getExperimento(experimento);
-    return exp->listarVariablesAleatorias();
+    return me->getExperimento(experimento)->listarVariablesAleatorias();
 }
 
-float ControladorExperimento::simularVariableAleatoria(std::string variableAleatoria) {
+float ControladorExperimento::simularVariableAleatoria(std::string experimento, std::string variableAleatoria) {
     ManejadorExperimento* me = ManejadorExperimento::getInstancia();
-    Experimento* exp = me->getExperimento(experimentoSeleccionado);
-    if(!exp->existeVariableAleatoria(variableAleatoria)){
-        throw ElementoNoEncontradoException("No existe una variable aleatoria '" + variableAleatoria + "' en el experimento '" + experimentoSeleccionado + "'");
+    if(!me->existeExperimento(experimento)){
+        throw ElementoNoEncontradoException("No existe un experimento llamado '" + experimento + "'");
     }
-    experimentoSeleccionado = ControladorExperimento::EXPERIMENTO_NULO;
+    Experimento* exp = me->getExperimento(experimento);
+    if(!exp->existeVariableAleatoria(variableAleatoria)){
+        throw ElementoNoEncontradoException("No existe una variable aleatoria '" + variableAleatoria + "' en el experimento '" + experimento + "'");
+    }
     return exp->simularVariableAleatoria(variableAleatoria);
 }
 
-float ControladorExperimento::consultarPropiedad(std::string variableAleatoria, PropiedadNumerica propiedad) {
+float ControladorExperimento::consultarPropiedad(std::string experimento, std::string variableAleatoria, PropiedadNumerica propiedad) {
     ManejadorExperimento* me = ManejadorExperimento::getInstancia();
-    Experimento* exp = me->getExperimento(experimentoSeleccionado);
-    if(!exp->existeVariableAleatoria(variableAleatoria)){
-        throw ElementoNoEncontradoException("No existe una variable aleatoria '" + variableAleatoria + "' en el experimento '" + experimentoSeleccionado + "'");
+    if(!me->existeExperimento(experimento)){
+        throw ElementoNoEncontradoException("No existe un experimento llamado '" + experimento + "'");
     }
-    experimentoSeleccionado = ControladorExperimento::EXPERIMENTO_NULO;
+    Experimento* exp = me->getExperimento(experimento);
+    if(!exp->existeVariableAleatoria(variableAleatoria)){
+        throw ElementoNoEncontradoException("No existe una variable aleatoria '" + variableAleatoria + "' en el experimento '" + experimento + "'");
+    }
     return exp->consultarPropiedad(variableAleatoria, propiedad);
 }
 
-float ControladorExperimento::evaluarVariableAleatoria(std::string variableAleatoria, float x) {
+float ControladorExperimento::evaluarVariableAleatoria(std::string experimento, std::string variableAleatoria, float x) {
     ManejadorExperimento* me = ManejadorExperimento::getInstancia();
-    Experimento* exp = me->getExperimento(experimentoSeleccionado);
-    if(!exp->existeVariableAleatoria(variableAleatoria)){
-        throw ElementoNoEncontradoException("No existe una variable aleatoria '" + variableAleatoria + "' en el experimento '" + experimentoSeleccionado + "'");
+    if(!me->existeExperimento(experimento)){
+        throw ElementoNoEncontradoException("No existe un experimento llamado '" + experimento + "'");
     }
-    experimentoSeleccionado = ControladorExperimento::EXPERIMENTO_NULO;
+    Experimento* exp = me->getExperimento(experimento);
+    if(!exp->existeVariableAleatoria(variableAleatoria)){
+        throw ElementoNoEncontradoException("No existe una variable aleatoria '" + variableAleatoria + "' en el experimento '" + experimento + "'");
+    }
     return exp->evaluarVariableAleatoria(variableAleatoria, x);
 }
 
-float ControladorExperimento::evaluarFuncionDistribucionAcumulada(std::string variableAleatoria, float x) {
+float ControladorExperimento::evaluarFuncionDistribucionAcumulada(std::string experimento, std::string variableAleatoria, float x) {
     ManejadorExperimento* me = ManejadorExperimento::getInstancia();
-    Experimento* exp = me->getExperimento(experimentoSeleccionado);
-    if(!exp->existeVariableAleatoria(variableAleatoria)){
-        throw ElementoNoEncontradoException("No existe una variable aleatoria '" + variableAleatoria + "' en el experimento '" + experimentoSeleccionado + "'");
+    if(!me->existeExperimento(experimento)){
+        throw ElementoNoEncontradoException("No existe un experimento llamado '" + experimento + "'");
     }
-    experimentoSeleccionado = ControladorExperimento::EXPERIMENTO_NULO;
+    Experimento* exp = me->getExperimento(experimento);
+    if(!exp->existeVariableAleatoria(variableAleatoria)){
+        throw ElementoNoEncontradoException("No existe una variable aleatoria '" + variableAleatoria + "' en el experimento '" + experimento + "'");
+    }
     return exp->evaluarDistribucionAcumulada(variableAleatoria, x);
 }
 

@@ -21,10 +21,10 @@ class IExperimento {
         virtual std::vector<DTSimulacionExperimento> simularExperimento(std::string,int) const = 0;
         virtual void altaVariableAleatoria(std::string,std::string,std::string,DTDistribucion*) = 0;
         virtual std::vector<DTVariableAleatoria> listarVariablesAleatorias(std::string) = 0;
-        virtual float simularVariableAleatoria(std::string) = 0;
-        virtual float consultarPropiedad(std::string,PropiedadNumerica) = 0;
-        virtual float evaluarVariableAleatoria(std::string,float) = 0;
-        virtual float evaluarFuncionDistribucionAcumulada(std::string,float) = 0;
+        virtual float simularVariableAleatoria(std::string,std::string) = 0;
+        virtual float consultarPropiedad(std::string,std::string,PropiedadNumerica) = 0;
+        virtual float evaluarVariableAleatoria(std::string,std::string,float) = 0;
+        virtual float evaluarFuncionDistribucionAcumulada(std::string,std::string,float) = 0;
 };
 
 #endif
