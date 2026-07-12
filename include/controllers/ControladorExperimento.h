@@ -14,7 +14,7 @@ class ControladorExperimento: public IExperimento {
         void asociarEventos(std::string,std::vector<DTEvento>);
         DTEvento simularExperimento(std::string) const;
         std::vector<DTSimulacionExperimento> simularExperimento(std::string,int) const;
-        void altaVariableAleatoria(std::string,std::string,std::string,DTDistribucion);
+        void altaVariableAleatoria(std::string,std::string,std::string,DTDistribucion*);
         std::vector<DTVariableAleatoria> listarVariablesAleatorias(std::string);
         float simularVariableAleatoria(std::string);
         float consultarPropiedad(std::string,PropiedadNumerica);

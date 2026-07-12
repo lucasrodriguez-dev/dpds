@@ -48,12 +48,12 @@ std::vector<DTSimulacionExperimento> Experimento::simular(int cantidadSimulacion
     }
     std::vector<DTSimulacionExperimento> retorno;
     for(auto [evento, cantidadApariciones]: ocurrencias){
-        retorno.push_back(DTSimulacionExperimento(evento, cantidadApariciones, cantidadApariciones/cantidadSimulaciones));
+        retorno.push_back(DTSimulacionExperimento(evento, cantidadApariciones, static_cast<float>(cantidadApariciones)/cantidadSimulaciones));
     }
     return retorno;
 }
 
-void Experimento::agregarVariableAleatoria(std::string id, std::string descripcion, DTDistribucion dtdistribucion) {
+void Experimento::agregarVariableAleatoria(std::string id, std::string descripcion, DTDistribucion* dtdistribucion) {
     variablesAleatorias.insert({id, VariableAleatoria(id, descripcion, dtdistribucion)});
 }
 

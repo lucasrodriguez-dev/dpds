@@ -2,7 +2,7 @@
 #include "factories/FabricaDistribucion.h"
 #include "exceptions/DominioException.h"
 
-VariableAleatoria::VariableAleatoria(std::string id, std::string descripcion, DTDistribucion dtdistribucion) {
+VariableAleatoria::VariableAleatoria(std::string id, std::string descripcion, DTDistribucion* dtdistribucion) {
     this->id = id;
     this->descripcion = descripcion;
     this->distribucion = FabricaDistribucion::crear(dtdistribucion);

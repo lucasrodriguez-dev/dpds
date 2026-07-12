@@ -18,7 +18,7 @@ class IExperimento {
         virtual void asociarEventos(std::string,std::vector<DTEvento>) = 0;
         virtual DTEvento simularExperimento(std::string) const = 0;
         virtual std::vector<DTSimulacionExperimento> simularExperimento(std::string,int) const = 0;
-        virtual void altaVariableAleatoria(std::string,std::string,std::string,DTDistribucion) = 0;
+        virtual void altaVariableAleatoria(std::string,std::string,std::string,DTDistribucion*) = 0;
         virtual std::vector<DTVariableAleatoria> listarVariablesAleatorias(std::string) = 0;
         virtual float simularVariableAleatoria(std::string) = 0;
         virtual float consultarPropiedad(std::string,PropiedadNumerica) = 0;

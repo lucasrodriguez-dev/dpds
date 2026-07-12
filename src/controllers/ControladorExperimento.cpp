@@ -38,7 +38,7 @@ std::vector<DTSimulacionExperimento> ControladorExperimento::simularExperimento(
     return exp->simular(cantidadSimulaciones);
 }
 
-void ControladorExperimento::altaVariableAleatoria(std::string experimento, std::string id, std::string descripcion, DTDistribucion dtdistribucion) {
+void ControladorExperimento::altaVariableAleatoria(std::string experimento, std::string id, std::string descripcion, DTDistribucion* dtdistribucion) {
     ManejadorExperimento* me = ManejadorExperimento::getInstancia();
     Experimento* exp = me->getExperimento(experimento);
     exp->agregarVariableAleatoria(id, descripcion, dtdistribucion);

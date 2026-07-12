@@ -6,7 +6,7 @@
 
 class FabricaDistribucion {
     public:
-        static Distribucion* crear(DTDistribucion&);
+        static Distribucion* crear(DTDistribucion*);
 };
 
 #endif

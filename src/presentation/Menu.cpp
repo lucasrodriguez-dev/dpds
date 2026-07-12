@@ -2,6 +2,7 @@
 #include "factories/FabricaSistema.h"
 #include "testing/CargaDatos.h"
 #include <iostream>
+#include <limits>
 #include "datatypes/DTBer.h"
 #include "datatypes/DTBin.h"
 #include "datatypes/DTHip.h"
@@ -13,22 +14,27 @@
 
 using std::string, std::cout, std::cin, std::getline, std::endl, std::vector;
 
+void descartarSaltoDeLinea() {
+    cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+}
+
 void Menu::mostrarMenu() {
     int opcion = -1;
-    while (opcion != 10) {
+    while (opcion != 0) {
         cout << "\n=== MENU PRINCIPAL ===" << endl;
         cout << "1. Crear experimento" << endl;
         cout << "2. Definir eventos" << endl;
         cout << "3. Simular experimento" << endl;
-        cout << "4. Crear variable aleatoria" << endl;
-        cout << "5. Simular variable aleatoria" << endl;
-        cout << "6. Consultar propiedad de variable aleatoria" << endl;
-        cout << "7. Evaluar variable aleatoria" << endl;
-        cout << "8. Evaluar distribución acumulada de variable aleatoria" << endl;
-        //cout << "9. Cargar Datos" << endl;
-        cout << "10. Salir" << endl;
+        cout << "4. Realizar múltiples simulaciones" << endl;
+        cout << "5. Crear variable aleatoria" << endl;
+        cout << "6. Simular variable aleatoria" << endl;
+        cout << "7. Consultar propiedad de variable aleatoria" << endl;
+        cout << "8. Evaluar variable aleatoria" << endl;
+        cout << "9. Evaluar distribución acumulada de variable aleatoria" << endl;
+        //cout << "10. Cargar Datos" << endl;
+        cout << "0. Salir" << endl;
         cout << "Ingrese una opcion: ";
-        cin >> opcion;
+        cin >> opcion; descartarSaltoDeLinea();
 
         switch (opcion) {
             case 1: {
@@ -44,31 +50,35 @@ void Menu::mostrarMenu() {
                 break;
             }
             case 4: {
-                crearVariableAleatoria();
+                realizarMultiplesSimulaciones();
                 break;
             }
             case 5: {
-                simularVariableAleatoria();
+                crearVariableAleatoria();
                 break;
             }
             case 6: {
-                consultarPropiedadNumerica();
+                simularVariableAleatoria();
                 break;
             }
             case 7: {
-                evaluarVariableAleatoria();
+                consultarPropiedadNumerica();
                 break;
             }
             case 8: {
+                evaluarVariableAleatoria();
+                break;
+            }
+            case 9: {
                 evaluarFuncionDistribucionVariableAleatoria();
                 break;
             }
-            /*case 9: {
+            /*case 10: {
                 cargarDatos();
                 break;
             }
                 */
-            case 10: {
+            case 0: {
                 cout << "Saliendo del sistema..." << endl;
                 liberarMemoria();
                 break;
@@ -90,9 +100,11 @@ struct seleccionVariable {
 };
 
 void listarExperimentos(vector<DTExperimento> experimentos){
+    cout << endl << "EXPERIMENTOS" << endl << ".............." << endl;
     for(auto experimento: experimentos){
         cout << experimento << endl;
     }
+    cout << ".............." << endl;
 }
 
 void listarVariablesAleatorias(vector<DTVariableAleatoria> variables){
@@ -168,7 +180,7 @@ void Menu::definirEventos() {
             suma += prob;
             //validar que no se repita y que esté entre 0 y 1
             eventos.push_back(DTEvento(nom, prob));
-            cout << "Ingrese 1 si desea agregar otro evento, 0 si no: "; cin >> agregarEvento;
+            cout << "Ingrese 1 si desea agregar otro evento, 0 si no: "; cin >> agregarEvento; descartarSaltoDeLinea();
         }
         controlador->asociarEventos(nombre, eventos);
     } else {
@@ -303,42 +315,42 @@ void Menu::crearVariableAleatoria() {
         switch(opcion){
             case 1: {
                 DTDistribucion* distribucion = leerBernoulli();
-                controlador->altaVariableAleatoria(nombre, id, descripcion, *(distribucion));
+                controlador->altaVariableAleatoria(nombre, id, descripcion, distribucion);
                 break;
             }
             case 2: {
                 DTDistribucion* distribucion = leerBinomial();
-                controlador->altaVariableAleatoria(nombre, id, descripcion, *(distribucion));
+                controlador->altaVariableAleatoria(nombre, id, descripcion, distribucion);
                 break;
             }
             case 3: {
                 DTDistribucion* distribucion = leerHipergeometrica();
-                controlador->altaVariableAleatoria(nombre, id, descripcion, *(distribucion));
+                controlador->altaVariableAleatoria(nombre, id, descripcion, distribucion);
                 break;
             }
             case 4: {
                 DTDistribucion* distribucion = leerBinomialNegativa();
-                controlador->altaVariableAleatoria(nombre, id, descripcion, *(distribucion));
+                controlador->altaVariableAleatoria(nombre, id, descripcion, distribucion);
                 break;
             }
             case 5: {
                 DTDistribucion* distribucion = leerPoisson();
-                controlador->altaVariableAleatoria(nombre, id, descripcion, *(distribucion));
+                controlador->altaVariableAleatoria(nombre, id, descripcion, distribucion);
                 break;
             }
             case 6: {
                 DTDistribucion* distribucion = leerUniforme();
-                controlador->altaVariableAleatoria(nombre, id, descripcion, *(distribucion));
+                controlador->altaVariableAleatoria(nombre, id, descripcion, distribucion);
                 break;
             }
             case 7: {
                 DTDistribucion* distribucion = leerExponencial();
-                controlador->altaVariableAleatoria(nombre, id, descripcion, *(distribucion));
+                controlador->altaVariableAleatoria(nombre, id, descripcion, distribucion);
                 break;
             }
             case 8: {
                 DTDistribucion* distribucion = leerNormal();
-                controlador->altaVariableAleatoria(nombre, id, descripcion, *(distribucion));
+                controlador->altaVariableAleatoria(nombre, id, descripcion, distribucion);
                 break;
             }
             default: {
