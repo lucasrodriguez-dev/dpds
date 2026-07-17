@@ -888,4 +888,15 @@ api/CMakeFiles/api.dir/main.cpp.o: /workspaces/dpds/api/main.cpp \
  /workspaces/dpds/build/_deps/crow-src/include/crow/http_server.h \
  /workspaces/dpds/build/_deps/crow-src/include/crow/version.h \
  /workspaces/dpds/build/_deps/crow-src/include/crow/app.h \
- /usr/include/c++/13/thread /usr/include/c++/13/bits/this_thread_sleep.h
+ /usr/include/c++/13/thread /usr/include/c++/13/bits/this_thread_sleep.h \
+ /workspaces/dpds/include/factories/FabricaSistema.h \
+ /workspaces/dpds/include/controllers/ControladorExperimento.h \
+ /workspaces/dpds/include/interfaces/IExperimento.h \
+ /workspaces/dpds/include/datatypes/DTExperimento.h \
+ /workspaces/dpds/include/datatypes/DTEvento.h \
+ /workspaces/dpds/include/datatypes/DTSimulacionExperimento.h \
+ /workspaces/dpds/include/datatypes/DTVariableAleatoria.h \
+ /workspaces/dpds/include/datatypes/DTDistribucion.h \
+ /workspaces/dpds/include/exceptions/ParametroInvalidoException.h \
+ /workspaces/dpds/include/exceptions/DominioException.h \
+ /workspaces/dpds/include/datatypes/PropiedadNumerica.h

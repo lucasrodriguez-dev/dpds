@@ -6631,7 +6631,18 @@ api/CMakeFiles/api.dir/main.cpp.o: /workspaces/dpds/api/main.cpp \
   _deps/crow-src/include/crow/task_timer.h \
   _deps/crow-src/include/crow/utility.h \
   _deps/crow-src/include/crow/version.h \
-  _deps/crow-src/include/crow/websocket.h
+  _deps/crow-src/include/crow/websocket.h \
+  /workspaces/dpds/include/controllers/ControladorExperimento.h \
+  /workspaces/dpds/include/datatypes/DTDistribucion.h \
+  /workspaces/dpds/include/datatypes/DTEvento.h \
+  /workspaces/dpds/include/datatypes/DTExperimento.h \
+  /workspaces/dpds/include/datatypes/DTSimulacionExperimento.h \
+  /workspaces/dpds/include/datatypes/DTVariableAleatoria.h \
+  /workspaces/dpds/include/datatypes/PropiedadNumerica.h \
+  /workspaces/dpds/include/exceptions/DominioException.h \
+  /workspaces/dpds/include/exceptions/ParametroInvalidoException.h \
+  /workspaces/dpds/include/factories/FabricaSistema.h \
+  /workspaces/dpds/include/interfaces/IExperimento.h
 
 
 _deps/crow-src/include/crow/websocket.h:
