@@ -114,22 +114,6 @@ int main() {
         }
     });
 
-    CROW_ROUTE(app, "/experimentos/<string>/variables")([&](const std::string& experimento) {
-        try {
-            auto variables = controlador->listarVariablesAleatorias(experimento);
-            json_list data;
-            int i = 0;
-            for (const auto& var : variables) {
-                data[i]["id"] = var.getId();
-                data[i]["descripcion"] = var.getDescripcion();
-                i++;
-            }
-            return success("Variables aleatorias listadas correctamente", data);
-        } catch (const exception& e) {
-            return error("Error al listar variables aleatorias: " + string(e.what()), json_list());
-        }
-    });
-
     CROW_ROUTE(app, "/experimentos/<string>/simular")([&](const crow::request& req, const std::string& experimento) {
         try {
             int cantidad = 1;

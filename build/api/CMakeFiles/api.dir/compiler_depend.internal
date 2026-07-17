@@ -6672,10 +6672,18 @@ api/CMakeFiles/api.dir/main.cpp.o
  /workspaces/dpds/build/_deps/crow-src/include/crow/version.h
  /workspaces/dpds/build/_deps/crow-src/include/crow/websocket.h
  /workspaces/dpds/include/controllers/ControladorExperimento.h
+ /workspaces/dpds/include/datatypes/DTBer.h
+ /workspaces/dpds/include/datatypes/DTBin.h
+ /workspaces/dpds/include/datatypes/DTBinNeg.h
  /workspaces/dpds/include/datatypes/DTDistribucion.h
  /workspaces/dpds/include/datatypes/DTEvento.h
+ /workspaces/dpds/include/datatypes/DTExp.h
  /workspaces/dpds/include/datatypes/DTExperimento.h
+ /workspaces/dpds/include/datatypes/DTHip.h
+ /workspaces/dpds/include/datatypes/DTNormal.h
+ /workspaces/dpds/include/datatypes/DTPois.h
  /workspaces/dpds/include/datatypes/DTSimulacionExperimento.h
+ /workspaces/dpds/include/datatypes/DTUni.h
  /workspaces/dpds/include/datatypes/DTVariableAleatoria.h
  /workspaces/dpds/include/datatypes/PropiedadNumerica.h
  /workspaces/dpds/include/exceptions/DominioException.h

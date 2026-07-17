@@ -899,4 +899,12 @@ api/CMakeFiles/api.dir/main.cpp.o: /workspaces/dpds/api/main.cpp \
  /workspaces/dpds/include/datatypes/DTDistribucion.h \
  /workspaces/dpds/include/exceptions/ParametroInvalidoException.h \
  /workspaces/dpds/include/exceptions/DominioException.h \
- /workspaces/dpds/include/datatypes/PropiedadNumerica.h
+ /workspaces/dpds/include/datatypes/PropiedadNumerica.h \
+ /workspaces/dpds/include/datatypes/DTBer.h \
+ /workspaces/dpds/include/datatypes/DTBin.h \
+ /workspaces/dpds/include/datatypes/DTBinNeg.h \
+ /workspaces/dpds/include/datatypes/DTHip.h \
+ /workspaces/dpds/include/datatypes/DTPois.h \
+ /workspaces/dpds/include/datatypes/DTExp.h \
+ /workspaces/dpds/include/datatypes/DTNormal.h \
+ /workspaces/dpds/include/datatypes/DTUni.h
