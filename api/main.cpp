@@ -4,6 +4,9 @@
 
 using std::exception;
 using std::move;
+using json_null = crow::json::wvalue;
+using json_list = crow::json::wvalue::list;
+using std::string;
 
 /*
 Toda ruta devuelve un
@@ -14,7 +17,7 @@ Toda ruta devuelve un
 }
 */
 
-crow::json::wvalue success(const std::string& message, crow::json::wvalue data) {
+crow::json::wvalue success(const std::string& message, crow::json::wvalue data = json_null()) {
     crow::json::wvalue response;
     response["status"] = "success";
     response["message"] = message;
@@ -22,7 +25,7 @@ crow::json::wvalue success(const std::string& message, crow::json::wvalue data) 
     return response;
 }
 
-crow::json::wvalue error(const std::string& message, crow::json::wvalue data) {
+crow::json::wvalue error(const std::string& message, crow::json::wvalue data = json_null()) {
     crow::json::wvalue response;
     response["status"] = "error";
     response["message"] = message;
@@ -35,8 +38,13 @@ int main() {
 
     crow::SimpleApp app;
 
-    using json_null = crow::json::wvalue;
-    using json_list = crow::json::wvalue::list;
+    CROW_ROUTE(app, "/experimentos/new").methods(crow::HTTPMethod::POST)([&](const crow::request& req) {
+        auto body = crow::json::load(req.body);
+        if (!body)
+            return error("JSON inválido");
+        controlador->altaExperimento(body["nombre"].s(), body["descripcion"].s());
+        return success("Experimento creado");
+    });
 
     CROW_ROUTE(app, "/experimentos")([&]() {
         try {
