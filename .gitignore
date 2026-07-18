@@ -1,0 +1,22 @@
+# Archivos generados por CMake
+build/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# Compile Commands (opcional)
+compile_commands.json
+
+# Archivos temporales
+*.o
+*.obj
+*.exe
+*.out
+*.so
+*.dll
+*.a
+*.lib
+
+# VS Code
+.vscode/
