@@ -1,4 +1,4 @@
-# Install script for directory: /workspaces/dpds/api
+# Install script for directory: /home/lucas/Projects/personal/dpds/api
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -44,6 +44,6 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/workspaces/dpds/build/_deps/crow-build/cmake_install.cmake")
+  include("/home/lucas/Projects/personal/dpds/build/_deps/crow-build/cmake_install.cmake")
 endif()
 

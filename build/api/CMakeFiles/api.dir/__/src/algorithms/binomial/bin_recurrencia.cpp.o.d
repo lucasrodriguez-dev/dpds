@@ -1,7 +1,7 @@
 api/CMakeFiles/api.dir/__/src/algorithms/binomial/bin_recurrencia.cpp.o: \
- /workspaces/dpds/src/algorithms/binomial/bin_recurrencia.cpp \
+ /home/lucas/Projects/personal/dpds/src/algorithms/binomial/bin_recurrencia.cpp \
  /usr/include/stdc-predef.h \
- /workspaces/dpds/include/algorithms/binomial/bin_recurrencia.h \
+ /home/lucas/Projects/personal/dpds/include/algorithms/binomial/bin_recurrencia.h \
  /usr/include/c++/13/cmath /usr/include/c++/13/bits/requires_hosted.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \

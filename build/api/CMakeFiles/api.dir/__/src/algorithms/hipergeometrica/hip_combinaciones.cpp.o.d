@@ -1,8 +1,8 @@
 api/CMakeFiles/api.dir/__/src/algorithms/hipergeometrica/hip_combinaciones.cpp.o: \
- /workspaces/dpds/src/algorithms/hipergeometrica/hip_combinaciones.cpp \
+ /home/lucas/Projects/personal/dpds/src/algorithms/hipergeometrica/hip_combinaciones.cpp \
  /usr/include/stdc-predef.h \
- /workspaces/dpds/include/algorithms/hipergeometrica/hip_combinaciones.h \
- /workspaces/dpds/include/algorithms/combinatoria/combinacion_factoriales.h \
+ /home/lucas/Projects/personal/dpds/include/algorithms/hipergeometrica/hip_combinaciones.h \
+ /home/lucas/Projects/personal/dpds/include/algorithms/combinatoria/combinacion_factoriales.h \
  /usr/include/c++/13/cmath /usr/include/c++/13/bits/requires_hosted.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \

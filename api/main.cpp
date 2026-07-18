@@ -69,6 +69,10 @@ int main() {
 
     crow::SimpleApp app;
 
+    CROW_ROUTE(app, "/")([&]() {
+        return success("Bienvenido a la API de Experimentos Aleatorios");
+    });
+
     CROW_ROUTE(app, "/experimentos/new").methods(crow::HTTPMethod::POST)([&](const crow::request& req) {
         try {
             auto body = crow::json::load(req.body);

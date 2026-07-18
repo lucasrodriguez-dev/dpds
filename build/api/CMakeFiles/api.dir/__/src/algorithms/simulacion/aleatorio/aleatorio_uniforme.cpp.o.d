@@ -1,7 +1,7 @@
 api/CMakeFiles/api.dir/__/src/algorithms/simulacion/aleatorio/aleatorio_uniforme.cpp.o: \
- /workspaces/dpds/src/algorithms/simulacion/aleatorio/aleatorio_uniforme.cpp \
+ /home/lucas/Projects/personal/dpds/src/algorithms/simulacion/aleatorio/aleatorio_uniforme.cpp \
  /usr/include/stdc-predef.h \
- /workspaces/dpds/include/algorithms/simulacion/aleatorio/aleatorio_uniforme.h \
+ /home/lucas/Projects/personal/dpds/include/algorithms/simulacion/aleatorio/aleatorio_uniforme.h \
  /usr/include/c++/13/vector /usr/include/c++/13/bits/requires_hosted.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \

@@ -1,7 +1,7 @@
 api/CMakeFiles/api.dir/__/src/datatypes/DTVariableAleatoria.cpp.o: \
- /workspaces/dpds/src/datatypes/DTVariableAleatoria.cpp \
+ /home/lucas/Projects/personal/dpds/src/datatypes/DTVariableAleatoria.cpp \
  /usr/include/stdc-predef.h \
- /workspaces/dpds/include/datatypes/DTVariableAleatoria.h \
+ /home/lucas/Projects/personal/dpds/include/datatypes/DTVariableAleatoria.h \
  /usr/include/c++/13/string /usr/include/c++/13/bits/requires_hosted.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \

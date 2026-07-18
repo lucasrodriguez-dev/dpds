@@ -1,8 +1,8 @@
 api/CMakeFiles/api.dir/__/src/algorithms/poisson/pois_factorialFormula.cpp.o: \
- /workspaces/dpds/src/algorithms/poisson/pois_factorialFormula.cpp \
+ /home/lucas/Projects/personal/dpds/src/algorithms/poisson/pois_factorialFormula.cpp \
  /usr/include/stdc-predef.h \
- /workspaces/dpds/include/algorithms/poisson/pois_factorialFormula.h \
- /workspaces/dpds/include/algorithms/aritmetica/factorial.h \
+ /home/lucas/Projects/personal/dpds/include/algorithms/poisson/pois_factorialFormula.h \
+ /home/lucas/Projects/personal/dpds/include/algorithms/aritmetica/factorial.h \
  /usr/include/c++/13/cmath /usr/include/c++/13/bits/requires_hosted.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \

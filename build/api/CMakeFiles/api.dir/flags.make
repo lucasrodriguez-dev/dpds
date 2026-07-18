@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = -DASIO_STANDALONE
 
-CXX_INCLUDES = -I/workspaces/dpds/include -I/workspaces/dpds/build/_deps/crow-src/include
+CXX_INCLUDES = -I/home/lucas/Projects/personal/dpds/include -I/home/lucas/Projects/personal/dpds/build/_deps/crow-src/include
 
 CXX_FLAGS = -std=gnu++17
 

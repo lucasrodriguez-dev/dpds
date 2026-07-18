@@ -1,9 +1,10 @@
 api/CMakeFiles/api.dir/__/src/models/Experimento.cpp.o: \
- /workspaces/dpds/src/models/Experimento.cpp /usr/include/stdc-predef.h \
- /workspaces/dpds/include/models/Experimento.h \
- /workspaces/dpds/include/models/Evento.h \
- /workspaces/dpds/include/datatypes/DTEvento.h /usr/include/c++/13/string \
- /usr/include/c++/13/bits/requires_hosted.h \
+ /home/lucas/Projects/personal/dpds/src/models/Experimento.cpp \
+ /usr/include/stdc-predef.h \
+ /home/lucas/Projects/personal/dpds/include/models/Experimento.h \
+ /home/lucas/Projects/personal/dpds/include/models/Evento.h \
+ /home/lucas/Projects/personal/dpds/include/datatypes/DTEvento.h \
+ /usr/include/c++/13/string /usr/include/c++/13/bits/requires_hosted.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \
  /usr/include/features.h /usr/include/features-time64.h \
@@ -117,8 +118,8 @@ api/CMakeFiles/api.dir/__/src/models/Experimento.cpp.o: \
  /usr/include/c++/13/bits/memory_resource.h /usr/include/c++/13/cstddef \
  /usr/include/c++/13/bits/uses_allocator.h \
  /usr/include/c++/13/bits/uses_allocator_args.h /usr/include/c++/13/tuple \
- /workspaces/dpds/include/models/VariableAleatoria.h \
- /workspaces/dpds/include/distributions/Distribucion.h \
+ /home/lucas/Projects/personal/dpds/include/models/VariableAleatoria.h \
+ /home/lucas/Projects/personal/dpds/include/distributions/Distribucion.h \
  /usr/include/c++/13/cmath /usr/include/math.h \
  /usr/include/x86_64-linux-gnu/bits/math-vector.h \
  /usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h \
@@ -142,18 +143,18 @@ api/CMakeFiles/api.dir/__/src/models/Experimento.cpp.o: \
  /usr/include/c++/13/tr1/poly_hermite.tcc \
  /usr/include/c++/13/tr1/poly_laguerre.tcc \
  /usr/include/c++/13/tr1/riemann_zeta.tcc \
- /workspaces/dpds/include/exceptions/TipoDistribucionInvalidaException.h \
- /workspaces/dpds/include/exceptions/DominioException.h \
+ /home/lucas/Projects/personal/dpds/include/exceptions/TipoDistribucionInvalidaException.h \
+ /home/lucas/Projects/personal/dpds/include/exceptions/DominioException.h \
  /usr/include/c++/13/stdexcept /usr/include/c++/13/exception \
  /usr/include/c++/13/bits/exception_ptr.h \
  /usr/include/c++/13/bits/cxxabi_init_exception.h \
  /usr/include/c++/13/typeinfo /usr/include/c++/13/bits/nested_exception.h \
- /workspaces/dpds/include/exceptions/ParametroInvalidoException.h \
- /workspaces/dpds/include/datatypes/DTDistribucion.h \
- /workspaces/dpds/include/datatypes/DTVariableAleatoria.h \
- /workspaces/dpds/include/datatypes/PropiedadNumerica.h \
- /workspaces/dpds/include/datatypes/DTExperimento.h \
- /workspaces/dpds/include/datatypes/DTSimulacionExperimento.h \
+ /home/lucas/Projects/personal/dpds/include/exceptions/ParametroInvalidoException.h \
+ /home/lucas/Projects/personal/dpds/include/datatypes/DTDistribucion.h \
+ /home/lucas/Projects/personal/dpds/include/datatypes/DTVariableAleatoria.h \
+ /home/lucas/Projects/personal/dpds/include/datatypes/PropiedadNumerica.h \
+ /home/lucas/Projects/personal/dpds/include/datatypes/DTExperimento.h \
+ /home/lucas/Projects/personal/dpds/include/datatypes/DTSimulacionExperimento.h \
  /usr/include/c++/13/map /usr/include/c++/13/bits/stl_tree.h \
  /usr/include/c++/13/ext/aligned_buffer.h \
  /usr/include/c++/13/bits/node_handle.h \
@@ -164,5 +165,5 @@ api/CMakeFiles/api.dir/__/src/models/Experimento.cpp.o: \
  /usr/include/c++/13/bits/stl_vector.h \
  /usr/include/c++/13/bits/stl_bvector.h \
  /usr/include/c++/13/bits/vector.tcc \
- /workspaces/dpds/include/algorithms/simulacion/SimulacionAlgorithms.h \
- /workspaces/dpds/include/algorithms/simulacion/simulacion_lineal.h
+ /home/lucas/Projects/personal/dpds/include/algorithms/simulacion/SimulacionAlgorithms.h \
+ /home/lucas/Projects/personal/dpds/include/algorithms/simulacion/simulacion_lineal.h

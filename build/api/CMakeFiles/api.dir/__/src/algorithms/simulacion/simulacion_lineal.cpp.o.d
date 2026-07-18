@@ -1,7 +1,7 @@
 api/CMakeFiles/api.dir/__/src/algorithms/simulacion/simulacion_lineal.cpp.o: \
- /workspaces/dpds/src/algorithms/simulacion/simulacion_lineal.cpp \
+ /home/lucas/Projects/personal/dpds/src/algorithms/simulacion/simulacion_lineal.cpp \
  /usr/include/stdc-predef.h \
- /workspaces/dpds/include/algorithms/simulacion/simulacion_lineal.h \
+ /home/lucas/Projects/personal/dpds/include/algorithms/simulacion/simulacion_lineal.h \
  /usr/include/c++/13/vector /usr/include/c++/13/bits/requires_hosted.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \
@@ -52,4 +52,4 @@ api/CMakeFiles/api.dir/__/src/algorithms/simulacion/simulacion_lineal.cpp.o: \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h \
  /usr/include/c++/13/bits/uses_allocator.h \
  /usr/include/c++/13/bits/uses_allocator_args.h /usr/include/c++/13/tuple \
- /workspaces/dpds/include/algorithms/simulacion/aleatorio/aleatorio_uniforme.h
+ /home/lucas/Projects/personal/dpds/include/algorithms/simulacion/aleatorio/aleatorio_uniforme.h

@@ -4,19 +4,19 @@
 cmake_minimum_required(VERSION 3.5)
 
 file(MAKE_DIRECTORY
-  "/workspaces/dpds/build/_deps/crow-src"
-  "/workspaces/dpds/build/_deps/crow-build"
-  "/workspaces/dpds/build/_deps/crow-subbuild/crow-populate-prefix"
-  "/workspaces/dpds/build/_deps/crow-subbuild/crow-populate-prefix/tmp"
-  "/workspaces/dpds/build/_deps/crow-subbuild/crow-populate-prefix/src/crow-populate-stamp"
-  "/workspaces/dpds/build/_deps/crow-subbuild/crow-populate-prefix/src"
-  "/workspaces/dpds/build/_deps/crow-subbuild/crow-populate-prefix/src/crow-populate-stamp"
+  "/home/lucas/Projects/personal/dpds/build/_deps/crow-src"
+  "/home/lucas/Projects/personal/dpds/build/_deps/crow-build"
+  "/home/lucas/Projects/personal/dpds/build/_deps/crow-subbuild/crow-populate-prefix"
+  "/home/lucas/Projects/personal/dpds/build/_deps/crow-subbuild/crow-populate-prefix/tmp"
+  "/home/lucas/Projects/personal/dpds/build/_deps/crow-subbuild/crow-populate-prefix/src/crow-populate-stamp"
+  "/home/lucas/Projects/personal/dpds/build/_deps/crow-subbuild/crow-populate-prefix/src"
+  "/home/lucas/Projects/personal/dpds/build/_deps/crow-subbuild/crow-populate-prefix/src/crow-populate-stamp"
 )
 
 set(configSubDirs )
 foreach(subDir IN LISTS configSubDirs)
-    file(MAKE_DIRECTORY "/workspaces/dpds/build/_deps/crow-subbuild/crow-populate-prefix/src/crow-populate-stamp/${subDir}")
+    file(MAKE_DIRECTORY "/home/lucas/Projects/personal/dpds/build/_deps/crow-subbuild/crow-populate-prefix/src/crow-populate-stamp/${subDir}")
 endforeach()
 if(cfgdir)
-  file(MAKE_DIRECTORY "/workspaces/dpds/build/_deps/crow-subbuild/crow-populate-prefix/src/crow-populate-stamp${cfgdir}") # cfgdir has leading slash
+  file(MAKE_DIRECTORY "/home/lucas/Projects/personal/dpds/build/_deps/crow-subbuild/crow-populate-prefix/src/crow-populate-stamp${cfgdir}") # cfgdir has leading slash
 endif()

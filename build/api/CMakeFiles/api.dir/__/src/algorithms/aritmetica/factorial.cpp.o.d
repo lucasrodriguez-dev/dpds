@@ -1,4 +1,4 @@
 api/CMakeFiles/api.dir/__/src/algorithms/aritmetica/factorial.cpp.o: \
- /workspaces/dpds/src/algorithms/aritmetica/factorial.cpp \
+ /home/lucas/Projects/personal/dpds/src/algorithms/aritmetica/factorial.cpp \
  /usr/include/stdc-predef.h \
- /workspaces/dpds/include/algorithms/aritmetica/factorial.h
+ /home/lucas/Projects/personal/dpds/include/algorithms/aritmetica/factorial.h

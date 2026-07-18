@@ -1,7 +1,8 @@
 api/CMakeFiles/api.dir/__/src/distributions/Bin.cpp.o: \
- /workspaces/dpds/src/distributions/Bin.cpp /usr/include/stdc-predef.h \
- /workspaces/dpds/include/distributions/Bin.h \
- /workspaces/dpds/include/distributions/Distribucion.h \
+ /home/lucas/Projects/personal/dpds/src/distributions/Bin.cpp \
+ /usr/include/stdc-predef.h \
+ /home/lucas/Projects/personal/dpds/include/distributions/Bin.h \
+ /home/lucas/Projects/personal/dpds/include/distributions/Distribucion.h \
  /usr/include/c++/13/cmath /usr/include/c++/13/bits/requires_hosted.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \
@@ -86,8 +87,8 @@ api/CMakeFiles/api.dir/__/src/distributions/Bin.cpp.o: \
  /usr/include/c++/13/tr1/poly_hermite.tcc \
  /usr/include/c++/13/tr1/poly_laguerre.tcc \
  /usr/include/c++/13/tr1/riemann_zeta.tcc \
- /workspaces/dpds/include/exceptions/TipoDistribucionInvalidaException.h \
- /workspaces/dpds/include/exceptions/DominioException.h \
+ /home/lucas/Projects/personal/dpds/include/exceptions/TipoDistribucionInvalidaException.h \
+ /home/lucas/Projects/personal/dpds/include/exceptions/DominioException.h \
  /usr/include/c++/13/stdexcept /usr/include/c++/13/exception \
  /usr/include/c++/13/bits/exception.h \
  /usr/include/c++/13/bits/exception_ptr.h \
@@ -143,8 +144,8 @@ api/CMakeFiles/api.dir/__/src/distributions/Bin.cpp.o: \
  /usr/include/c++/13/bits/memory_resource.h /usr/include/c++/13/cstddef \
  /usr/include/c++/13/bits/uses_allocator.h \
  /usr/include/c++/13/bits/uses_allocator_args.h /usr/include/c++/13/tuple \
- /workspaces/dpds/include/exceptions/ParametroInvalidoException.h \
- /workspaces/dpds/include/algorithms/binomial/BinomialAlgorithms.h \
- /workspaces/dpds/include/algorithms/binomial/bin_recurrencia.h \
- /workspaces/dpds/include/algorithms/binomial/bin_combinaciones.h \
- /workspaces/dpds/include/distributions/Ber.h
+ /home/lucas/Projects/personal/dpds/include/exceptions/ParametroInvalidoException.h \
+ /home/lucas/Projects/personal/dpds/include/algorithms/binomial/BinomialAlgorithms.h \
+ /home/lucas/Projects/personal/dpds/include/algorithms/binomial/bin_recurrencia.h \
+ /home/lucas/Projects/personal/dpds/include/algorithms/binomial/bin_combinaciones.h \
+ /home/lucas/Projects/personal/dpds/include/distributions/Ber.h

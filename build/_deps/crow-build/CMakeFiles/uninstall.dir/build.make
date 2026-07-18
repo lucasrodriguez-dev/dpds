@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /workspaces/dpds
+CMAKE_SOURCE_DIR = /home/lucas/Projects/personal/dpds
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /workspaces/dpds/build
+CMAKE_BINARY_DIR = /home/lucas/Projects/personal/dpds/build
 
 # Utility rule file for uninstall.
 
@@ -67,7 +67,7 @@ include _deps/crow-build/CMakeFiles/uninstall.dir/compiler_depend.make
 include _deps/crow-build/CMakeFiles/uninstall.dir/progress.make
 
 _deps/crow-build/CMakeFiles/uninstall:
-	cd /workspaces/dpds/build/_deps/crow-build && /usr/bin/cmake -P /workspaces/dpds/build/_deps/crow-build/cmake_uninstall.cmake
+	cd /home/lucas/Projects/personal/dpds/build/_deps/crow-build && /usr/bin/cmake -P /home/lucas/Projects/personal/dpds/build/_deps/crow-build/cmake_uninstall.cmake
 
 uninstall: _deps/crow-build/CMakeFiles/uninstall
 uninstall: _deps/crow-build/CMakeFiles/uninstall.dir/build.make
@@ -78,10 +78,10 @@ _deps/crow-build/CMakeFiles/uninstall.dir/build: uninstall
 .PHONY : _deps/crow-build/CMakeFiles/uninstall.dir/build
 
 _deps/crow-build/CMakeFiles/uninstall.dir/clean:
-	cd /workspaces/dpds/build/_deps/crow-build && $(CMAKE_COMMAND) -P CMakeFiles/uninstall.dir/cmake_clean.cmake
+	cd /home/lucas/Projects/personal/dpds/build/_deps/crow-build && $(CMAKE_COMMAND) -P CMakeFiles/uninstall.dir/cmake_clean.cmake
 .PHONY : _deps/crow-build/CMakeFiles/uninstall.dir/clean
 
 _deps/crow-build/CMakeFiles/uninstall.dir/depend:
-	cd /workspaces/dpds/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /workspaces/dpds /workspaces/dpds/build/_deps/crow-src /workspaces/dpds/build /workspaces/dpds/build/_deps/crow-build /workspaces/dpds/build/_deps/crow-build/CMakeFiles/uninstall.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/lucas/Projects/personal/dpds/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/lucas/Projects/personal/dpds /home/lucas/Projects/personal/dpds/build/_deps/crow-src /home/lucas/Projects/personal/dpds/build /home/lucas/Projects/personal/dpds/build/_deps/crow-build /home/lucas/Projects/personal/dpds/build/_deps/crow-build/CMakeFiles/uninstall.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : _deps/crow-build/CMakeFiles/uninstall.dir/depend
 

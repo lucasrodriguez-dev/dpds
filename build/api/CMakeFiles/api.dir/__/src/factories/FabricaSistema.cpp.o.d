@@ -1,9 +1,9 @@
 api/CMakeFiles/api.dir/__/src/factories/FabricaSistema.cpp.o: \
- /workspaces/dpds/src/factories/FabricaSistema.cpp \
+ /home/lucas/Projects/personal/dpds/src/factories/FabricaSistema.cpp \
  /usr/include/stdc-predef.h \
- /workspaces/dpds/include/factories/FabricaSistema.h \
- /workspaces/dpds/include/controllers/ControladorExperimento.h \
- /workspaces/dpds/include/interfaces/IExperimento.h \
+ /home/lucas/Projects/personal/dpds/include/factories/FabricaSistema.h \
+ /home/lucas/Projects/personal/dpds/include/controllers/ControladorExperimento.h \
+ /home/lucas/Projects/personal/dpds/include/interfaces/IExperimento.h \
  /usr/include/c++/13/string /usr/include/c++/13/bits/requires_hosted.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \
@@ -122,15 +122,15 @@ api/CMakeFiles/api.dir/__/src/factories/FabricaSistema.cpp.o: \
  /usr/include/c++/13/bits/stl_vector.h \
  /usr/include/c++/13/bits/stl_bvector.h \
  /usr/include/c++/13/bits/vector.tcc \
- /workspaces/dpds/include/datatypes/DTExperimento.h \
- /workspaces/dpds/include/datatypes/DTEvento.h \
- /workspaces/dpds/include/datatypes/DTSimulacionExperimento.h \
- /workspaces/dpds/include/datatypes/DTVariableAleatoria.h \
- /workspaces/dpds/include/datatypes/DTDistribucion.h \
- /workspaces/dpds/include/exceptions/ParametroInvalidoException.h \
- /workspaces/dpds/include/exceptions/DominioException.h \
+ /home/lucas/Projects/personal/dpds/include/datatypes/DTExperimento.h \
+ /home/lucas/Projects/personal/dpds/include/datatypes/DTEvento.h \
+ /home/lucas/Projects/personal/dpds/include/datatypes/DTSimulacionExperimento.h \
+ /home/lucas/Projects/personal/dpds/include/datatypes/DTVariableAleatoria.h \
+ /home/lucas/Projects/personal/dpds/include/datatypes/DTDistribucion.h \
+ /home/lucas/Projects/personal/dpds/include/exceptions/ParametroInvalidoException.h \
+ /home/lucas/Projects/personal/dpds/include/exceptions/DominioException.h \
  /usr/include/c++/13/stdexcept /usr/include/c++/13/exception \
  /usr/include/c++/13/bits/exception_ptr.h \
  /usr/include/c++/13/bits/cxxabi_init_exception.h \
  /usr/include/c++/13/typeinfo /usr/include/c++/13/bits/nested_exception.h \
- /workspaces/dpds/include/datatypes/PropiedadNumerica.h
+ /home/lucas/Projects/personal/dpds/include/datatypes/PropiedadNumerica.h

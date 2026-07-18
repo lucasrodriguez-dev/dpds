@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /workspaces/dpds
+CMAKE_SOURCE_DIR = /home/lucas/Projects/personal/dpds
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /workspaces/dpds/build
+CMAKE_BINARY_DIR = /home/lucas/Projects/personal/dpds/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -68,7 +68,7 @@ CMAKE_BINARY_DIR = /workspaces/dpds/build
 # Special rule for the target package
 package: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Run CPack packaging tool..."
-	cd /workspaces/dpds/build && /usr/bin/cpack --config ./CPackConfig.cmake
+	cd /home/lucas/Projects/personal/dpds/build && /usr/bin/cpack --config ./CPackConfig.cmake
 .PHONY : package
 
 # Special rule for the target package
@@ -78,7 +78,7 @@ package/fast: package
 # Special rule for the target package_source
 package_source:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Run CPack packaging tool for source..."
-	cd /workspaces/dpds/build && /usr/bin/cpack --config ./CPackSourceConfig.cmake /workspaces/dpds/build/CPackSourceConfig.cmake
+	cd /home/lucas/Projects/personal/dpds/build && /usr/bin/cpack --config ./CPackSourceConfig.cmake /home/lucas/Projects/personal/dpds/build/CPackSourceConfig.cmake
 .PHONY : package_source
 
 # Special rule for the target package_source
@@ -152,14 +152,14 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /workspaces/dpds/build && $(CMAKE_COMMAND) -E cmake_progress_start /workspaces/dpds/build/CMakeFiles /workspaces/dpds/build/_deps/crow-build//CMakeFiles/progress.marks
-	cd /workspaces/dpds/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 _deps/crow-build/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /workspaces/dpds/build/CMakeFiles 0
+	cd /home/lucas/Projects/personal/dpds/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/lucas/Projects/personal/dpds/build/CMakeFiles /home/lucas/Projects/personal/dpds/build/_deps/crow-build//CMakeFiles/progress.marks
+	cd /home/lucas/Projects/personal/dpds/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 _deps/crow-build/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/lucas/Projects/personal/dpds/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /workspaces/dpds/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 _deps/crow-build/clean
+	cd /home/lucas/Projects/personal/dpds/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 _deps/crow-build/clean
 .PHONY : clean
 
 # The main clean target
@@ -168,22 +168,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /workspaces/dpds/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 _deps/crow-build/preinstall
+	cd /home/lucas/Projects/personal/dpds/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 _deps/crow-build/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /workspaces/dpds/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 _deps/crow-build/preinstall
+	cd /home/lucas/Projects/personal/dpds/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 _deps/crow-build/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /workspaces/dpds/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/lucas/Projects/personal/dpds/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 _deps/crow-build/CMakeFiles/uninstall.dir/rule:
-	cd /workspaces/dpds/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 _deps/crow-build/CMakeFiles/uninstall.dir/rule
+	cd /home/lucas/Projects/personal/dpds/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 _deps/crow-build/CMakeFiles/uninstall.dir/rule
 .PHONY : _deps/crow-build/CMakeFiles/uninstall.dir/rule
 
 # Convenience name for target.
@@ -192,7 +192,7 @@ uninstall: _deps/crow-build/CMakeFiles/uninstall.dir/rule
 
 # fast build rule for target.
 uninstall/fast:
-	cd /workspaces/dpds/build && $(MAKE) $(MAKESILENT) -f _deps/crow-build/CMakeFiles/uninstall.dir/build.make _deps/crow-build/CMakeFiles/uninstall.dir/build
+	cd /home/lucas/Projects/personal/dpds/build && $(MAKE) $(MAKESILENT) -f _deps/crow-build/CMakeFiles/uninstall.dir/build.make _deps/crow-build/CMakeFiles/uninstall.dir/build
 .PHONY : uninstall/fast
 
 # Help Target
@@ -221,6 +221,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /workspaces/dpds/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/lucas/Projects/personal/dpds/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 
