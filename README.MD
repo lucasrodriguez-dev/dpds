@@ -4,8 +4,7 @@
 
 1. ```sudo apt install cmake```
 2. ```sudo apt install libasio-dev```
-3. ```rm -rf build```
-4. ```cmake -B build```
+3. ```cmake -B build```
 
 ## Compilación
 
