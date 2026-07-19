@@ -13,3 +13,5 @@
 ## Ejecución
 
 ```./build/api/api```
+
+Queda escuchando en el puerto 8080 (configurar en `api/main.cpp`)
